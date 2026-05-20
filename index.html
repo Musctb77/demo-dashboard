@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Jualan Bas</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080c14;
+  --s1: #0e1420;
+  --s2: #131928;
+  --s3: #1a2235;
+  --b: #1f2d45;
+  --b2: #2a3d5a;
+  --text: #dde5f0;
+  --muted: #5a7294;
+  --muted2: #3d5270;
+  --acc: #3b82f6;
+  --acc2: #10b981;
+  --acc3: #f59e0b;
+  --acc4: #ef4444;
+  --ots: #3b82f6;
+  --bot: #10b981;
+  --easi: #a78bfa;
+  --red: #f87171;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Sora', sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;font-size:14px;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(var(--b) 1px,transparent 1px),linear-gradient(90deg,var(--b) 1px,transparent 1px);
+  background-size:48px 48px;opacity:.12;}
+
+.wrap{max-width:1280px;margin:0 auto;padding:28px 20px;position:relative;z-index:1;}
+
+/* Header */
+header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px;flex-wrap:wrap;gap:12px;}
+.hd-left .eyebrow{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;}
+.hd-left h1{font-size:22px;font-weight:600;letter-spacing:-.02em;}
+.hd-left h1 span{color:var(--acc);}
+.live-badge{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--acc2);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:5px 12px;border-radius:4px;}
+.live-dot{width:6px;height:6px;background:var(--acc2);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* Filters */
+.filters{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;align-items:center;}
+.filter-label{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-right:4px;}
+select{background:var(--s2);color:var(--text);border:1px solid var(--b);border-radius:6px;padding:7px 12px;font-family:var(--mono);font-size:12px;cursor:pointer;outline:none;transition:border-color .2s;}
+select:hover,select:focus{border-color:var(--acc);}
+.filter-reset{font-family:var(--mono);font-size:10px;color:var(--muted);background:none;border:1px solid var(--b2);border-radius:4px;padding:6px 12px;cursor:pointer;transition:all .2s;letter-spacing:.06em;}
+.filter-reset:hover{color:var(--text);border-color:var(--muted);}
+
+/* Section label */
+.sec-label{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--b);}
+
+/* KPI Cards */
+.kpi-group{margin-bottom:20px;}
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
+.kpi-card{background:var(--s1);border:1px solid var(--b);border-radius:10px;padding:20px;position:relative;overflow:hidden;transition:border-color .25s,transform .2s;}
+.kpi-card:hover{border-color:var(--b2);transform:translateY(-1px);}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--kc,var(--acc));}
+.kpi-tag{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;}
+.kpi-main{font-size:26px;font-weight:600;letter-spacing:-.03em;line-height:1;margin-bottom:16px;color:var(--text);}
+.kpi-breakdown{display:flex;flex-direction:column;gap:5px;}
+.kpi-row-item{display:flex;justify-content:space-between;align-items:center;font-size:12px;}
+.kpi-row-item .label{color:var(--muted);font-family:var(--mono);font-size:11px;}
+.kpi-row-item .val{font-family:var(--mono);font-weight:500;}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;flex-shrink:0;}
+
+/* API Fees card */
+.api-card{background:var(--s1);border:1px solid var(--b);border-radius:10px;padding:20px;position:relative;overflow:hidden;margin-bottom:20px;}
+.api-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--acc3);}
+.api-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:14px;}
+.api-item{background:var(--s2);border:1px solid var(--b);border-radius:8px;padding:14px;}
+.api-item-label{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+.api-item-val{font-family:var(--mono);font-size:18px;font-weight:500;color:var(--acc3);}
+.api-item.total{border-color:var(--acc3);background:rgba(245,158,11,.05);}
+.api-item.total .api-item-val{font-size:22px;color:var(--acc3);}
+
+/* Charts grid */
+.charts-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-bottom:20px;}
+.charts-bottom{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;}
+@media(max-width:900px){.charts-bottom{grid-template-columns:1fr;}}
+.chart-card{background:var(--s1);border:1px solid var(--b);border-radius:10px;padding:20px;}
+.chart-title{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;}
+.chart-wrap{position:relative;}
+
+/* Top lists */
+.top-list{list-style:none;margin-top:4px;}
+.top-list li{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(31,45,69,.6);font-size:13px;}
+.top-list li:last-child{border-bottom:none;}
+.top-rank{font-family:var(--mono);font-size:10px;color:var(--muted2);width:18px;flex-shrink:0;}
+.top-name{flex:1;color:var(--text);}
+.top-bar-wrap{width:80px;height:4px;background:var(--s3);border-radius:2px;flex-shrink:0;}
+.top-bar{height:4px;border-radius:2px;background:var(--acc);transition:width .6s ease;}
+.top-val{font-family:var(--mono);font-size:11px;color:var(--muted);width:72px;text-align:right;flex-shrink:0;}
+
+/* Footer */
+footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:center;padding-top:20px;border-top:1px solid var(--b);letter-spacing:.08em;margin-top:8px;}
+
+/* Animate */
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+.kpi-card,.api-card,.chart-card{animation:fadeUp .4s ease both;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="hd-left">
+    <div class="eyebrow">Sistem Pengurusan Jualan Bas</div>
+    <h1>Dashboard <span id="hdr-period">2025 — April</span></h1>
+  </div>
+  <div class="live-badge"><span class="live-dot"></span>Data Demo</div>
+</header>
+
+<!-- Filters -->
+<div class="filters">
+  <span class="filter-label">Tapis :</span>
+  <select id="sel-year" onchange="render()">
+    <option value="2025">2025</option>
+    <option value="2024">2024</option>
+  </select>
+  <select id="sel-month" onchange="render()">
+    <option value="0">Semua Bulan</option>
+    <option value="1">Januari</option><option value="2">Februari</option>
+    <option value="3">Mac</option><option value="4" selected>April</option>
+    <option value="5">Mei</option><option value="6">Jun</option>
+    <option value="7">Julai</option><option value="8">Ogos</option>
+    <option value="9">September</option><option value="10">Oktober</option>
+    <option value="11">November</option><option value="12">Disember</option>
+  </select>
+  <button class="filter-reset" onclick="resetFilter()">↺ Reset</button>
+</div>
+
+<!-- KPI: Jualan -->
+<div class="kpi-group">
+  <div class="sec-label">Jumlah Jualan (RM)</div>
+  <div class="kpi-row">
+    <div class="kpi-card" style="--kc:var(--ots)">
+      <div class="kpi-tag">Jualan OTS</div>
+      <div class="kpi-main" id="k-ots-sales">—</div>
+      <div class="kpi-breakdown">
+        <div class="kpi-row-item"><span class="label">% daripada jumlah</span><span class="val" id="k-ots-pct" style="color:var(--ots)">—</span></div>
+      </div>
+    </div>
+    <div class="kpi-card" style="--kc:var(--bot)">
+      <div class="kpi-tag">Jualan BOT</div>
+      <div class="kpi-main" id="k-bot-sales">—</div>
+      <div class="kpi-breakdown">
+        <div class="kpi-row-item"><span class="label">% daripada jumlah</span><span class="val" id="k-bot-pct" style="color:var(--bot)">—</span></div>
+      </div>
+    </div>
+    <div class="kpi-card" style="--kc:var(--easi)">
+      <div class="kpi-tag">Jualan EASI</div>
+      <div class="kpi-main" id="k-easi-sales">—</div>
+      <div class="kpi-breakdown">
+        <div class="kpi-row-item"><span class="label">% daripada jumlah</span><span class="val" id="k-easi-pct" style="color:var(--easi)">—</span></div>
+      </div>
+    </div>
+    <div class="kpi-card" style="--kc:var(--red)">
+      <div class="kpi-tag">Jualan RED</div>
+      <div class="kpi-main" id="k-red-sales">—</div>
+      <div class="kpi-breakdown">
+        <div class="kpi-row-item"><span class="label">% daripada jumlah</span><span class="val" id="k-red-pct" style="color:var(--red)">—</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KPI: Tiket -->
+<div class="kpi-group">
+  <div class="sec-label">Jumlah Tiket (kiraan)</div>
+  <div class="kpi-row">
+    <div class="kpi-card" style="--kc:var(--ots)">
+      <div class="kpi-tag">Tiket OTS</div>
+      <div class="kpi-main" id="k-ots-tix">—</div>
+      <div class="kpi-breakdown">
+        <div class="kpi-row-item"><span class="label">% daripada jumlah</span><span class="val" id="k-ots-tpct" style="color:var(--ots)">—</span></div>
+      </div>
+    </div>
+    <div class="kpi-card" style="--kc:var(--bot)">
+      <div class="kpi-tag">Tiket BOT</div>
+      <div class="kpi-main" id="k-bot-tix">—</div>
+      <div class="kpi-breakdown">
+        <div class="kpi-row-item"><span class="label">% daripada jumlah</span><span class="val" id="k-bot-tpct" style="color:var(--bot)">—</span></div>
+      </div>
+    </div>
+    <div class="kpi-card" style="--kc:var(--easi)">
+      <div class="kpi-tag">Tiket EASI</div>
+      <div class="kpi-main" id="k-easi-tix">—</div>
+      <div class="kpi-breakdown">
+        <div class="kpi-row-item"><span class="label">% daripada jumlah</span><span class="val" id="k-easi-tpct" style="color:var(--easi)">—</span></div>
+      </div>
+    </div>
+    <div class="kpi-card" style="--kc:var(--red)">
+      <div class="kpi-tag">Tiket RED</div>
+      <div class="kpi-main" id="k-red-tix">—</div>
+      <div class="kpi-breakdown">
+        <div class="kpi-row-item"><span class="label">% daripada jumlah</span><span class="val" id="k-red-tpct" style="color:var(--red)">—</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- API Fees -->
+<div class="sec-label">Yuran API (RM)</div>
+<div class="api-card">
+  <div class="kpi-tag">Kos API yang dikutip untuk tempoh dipilih</div>
+  <div class="api-grid">
+    <div class="api-item">
+      <div class="api-item-label">BOT API Fee</div>
+      <div class="api-item-val" id="api-bot">—</div>
+    </div>
+    <div class="api-item">
+      <div class="api-item-label">EASI API Fee</div>
+      <div class="api-item-val" id="api-easi">—</div>
+    </div>
+    <div class="api-item">
+      <div class="api-item-label">RED API Fee</div>
+      <div class="api-item-val" id="api-red">—</div>
+    </div>
+    <div class="api-item">
+      <div class="api-item-label">RED Refund</div>
+      <div class="api-item-val" id="api-red-refund" style="color:#f87171">—</div>
+    </div>
+    <div class="api-item total">
+      <div class="api-item-label">Jumlah API Fee</div>
+      <div class="api-item-val" id="api-total">—</div>
+    </div>
+  </div>
+</div>
+
+<!-- 4 channel charts -->
+<div class="sec-label">Prestasi Saluran</div>
+<div class="charts-4">
+  <div class="chart-card">
+    <div class="chart-title">OTS — Jualan &amp; Tiket</div>
+    <div class="chart-wrap"><canvas id="ch-ots" height="180"></canvas></div>
+  </div>
+  <div class="chart-card">
+    <div class="chart-title">BOT — Jualan &amp; Tiket</div>
+    <div class="chart-wrap"><canvas id="ch-bot" height="180"></canvas></div>
+  </div>
+  <div class="chart-card">
+    <div class="chart-title">EASI — Jualan &amp; Tiket</div>
+    <div class="chart-wrap"><canvas id="ch-easi" height="180"></canvas></div>
+  </div>
+  <div class="chart-card">
+    <div class="chart-title">RED — Jualan &amp; Tiket</div>
+    <div class="chart-wrap"><canvas id="ch-red" height="180"></canvas></div>
+  </div>
+</div>
+
+<!-- Market share + Top lists -->
+<div class="sec-label">Analisis Pasaran &amp; Lokasi</div>
+<div class="charts-bottom">
+  <div class="chart-card">
+    <div class="chart-title">Market Share — Nilai Jualan (%)</div>
+    <div class="chart-wrap"><canvas id="ch-share" height="200"></canvas></div>
+    <div id="share-breakdown" style="margin-top:14px;display:flex;flex-direction:column;gap:6px;"></div>
+  </div>
+  <div class="chart-card">
+    <div class="chart-title">Top 5 Lokasi 'From' &amp; 'To'</div>
+    <div style="margin-bottom:10px;">
+      <div style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.1em;margin-bottom:6px;">FROM</div>
+      <ul class="top-list" id="top-from"></ul>
+    </div>
+    <div>
+      <div style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.1em;margin-bottom:6px;margin-top:14px;">TO</div>
+      <ul class="top-list" id="top-to"></ul>
+    </div>
+  </div>
+  <div class="chart-card">
+    <div class="chart-title">Top 5 Operator Bas (Jualan)</div>
+    <ul class="top-list" id="top-ops"></ul>
+  </div>
+</div>
+
+<footer>DEMO DASHBOARD · DATA ADALAH CONTOH SAHAJA · SEMUA VISUAL BERUBAH MENGIKUT FILTER</footer>
+</div>
+
+<script>
+// ── Seed random dengan key supaya consistent per filter ──
+function seededRand(seed){
+  let s=seed;
+  return function(){s=(s*16807+0)%2147483647;return(s-1)/2147483646;};
+}
+
+// ── Generate data demo berdasarkan tahun+bulan ──
+function genData(year, month){
+  const key = year*100+month;
+  const r = seededRand(key);
+  const months = month===0?12:1;
+  const scale = months * (0.8 + r()*0.4);
+
+  const oSales = Math.round(120000*scale + r()*40000);
+  const bSales = Math.round(85000*scale  + r()*30000);
+  const eSales = Math.round(60000*scale  + r()*20000);
+  const rSales = Math.round(40000*scale  + r()*15000);
+  const totalSales = oSales+bSales+eSales+rSales;
+
+  const oTix = Math.round(oSales/68 + r()*50);
+  const bTix = Math.round(bSales/72 + r()*40);
+  const eTix = Math.round(eSales/65 + r()*30);
+  const rTix = Math.round(rSales/60 + r()*25);
+  const totalTix = oTix+bTix+eTix+rTix;
+
+  const botFee    = Math.round(bSales*0.018);
+  const easiFee   = Math.round(eSales*0.022);
+  const redFee    = Math.round(rSales*0.025);
+  const redRefund = Math.round(rSales*0.008 + r()*1200);
+
+  const MONTHS = ['Jan','Feb','Mac','Apr','Mei','Jun','Jul','Ogo','Sep','Okt','Nov','Dis'];
+  const labels = month===0 ? MONTHS : MONTHS.slice(0,month);
+  const mkLine = (base,noise) => labels.map((_,i)=>{
+    const rr=seededRand(key+i*7+base);
+    return Math.round(base*(0.7+i*0.025)+rr()*noise);
+  });
+
+  const fromCities=['Kuala Lumpur','Johor Bahru','Penang','Ipoh','Melaka','Kota Bharu','Kuantan','Seremban'];
+  const toCities  =['Johor Bahru','Penang','Kuala Lumpur','Ipoh','Kuantan','Melaka','Kota Kinabalu','Kuching'];
+  const operators =['Transnasional','Konsortium','KKKL','Plusliner','CatchExpress','StarMart','Five Stars','Mutiara'];
+
+  const topFrom = fromCities.slice(0,5).map((c,i)=>{
+    const rr=seededRand(key+i*3+1);
+    return {name:c, val:Math.round(180+rr()*320)};
+  }).sort((a,b)=>b.val-a.val);
+
+  const topTo = toCities.slice(0,5).map((c,i)=>{
+    const rr=seededRand(key+i*3+2);
+    return {name:c, val:Math.round(150+rr()*300)};
+  }).sort((a,b)=>b.val-a.val);
+
+  const topOps = operators.slice(0,5).map((o,i)=>{
+    const rr=seededRand(key+i*3+3);
+    return {name:o, val:Math.round(8000+rr()*35000)};
+  }).sort((a,b)=>b.val-a.val);
+
+  return {
+    oSales,bSales,eSales,rSales,totalSales,
+    oTix,bTix,eTix,rTix,totalTix,
+    botFee,easiFee,redFee,redRefund,
+    labels,
+    oLine:mkLine(oSales/labels.length,15000),
+    bLine:mkLine(bSales/labels.length,10000),
+    eLine:mkLine(eSales/labels.length,8000),
+    rLine:mkLine(rSales/labels.length,6000),
+    oTixLine:mkLine(oTix/labels.length,80),
+    bTixLine:mkLine(bTix/labels.length,60),
+    eTixLine:mkLine(eTix/labels.length,50),
+    rTixLine:mkLine(rTix/labels.length,40),
+    topFrom, topTo, topOps
+  };
+}
+
+// ── Helpers ──
+const fmt = n => 'RM '+n.toLocaleString('ms-MY');
+const fmtN = n => n.toLocaleString('ms-MY');
+const pct = (a,b) => b===0?'0%':(a/b*100).toFixed(1)+'%';
+const gc = 'rgba(31,45,69,0.6)';
+const tc = '#5a7294';
+const baseOpts = {
+  plugins:{legend:{display:false}},
+  scales:{
+    x:{grid:{color:gc},ticks:{color:tc,font:{family:'JetBrains Mono',size:10}}},
+    y:{grid:{color:gc},ticks:{color:tc,font:{family:'JetBrains Mono',size:10}}}
+  }
+};
+
+// Store chart instances
+let charts = {};
+
+function destroyAll(){
+  Object.values(charts).forEach(c=>{try{c.destroy();}catch(e){}});
+  charts={};
+}
+
+function makeLineBar(id, labels, salesData, tixData, color){
+  const ctx = document.getElementById(id);
+  return new Chart(ctx,{
+    data:{
+      labels,
+      datasets:[
+        {type:'bar',label:'Jualan',data:salesData,backgroundColor:color+'33',borderColor:color,borderWidth:1,borderRadius:3,yAxisID:'y'},
+        {type:'line',label:'Tiket',data:tixData,borderColor:color,backgroundColor:'transparent',tension:0.4,pointRadius:3,pointBackgroundColor:color,yAxisID:'y2'}
+      ]
+    },
+    options:{
+      plugins:{legend:{display:true,labels:{color:tc,font:{family:'JetBrains Mono',size:10},boxWidth:8,padding:10}}},
+      scales:{
+        x:{grid:{color:gc},ticks:{color:tc,font:{family:'JetBrains Mono',size:9},maxRotation:45}},
+        y:{grid:{color:gc},ticks:{color:tc,font:{family:'JetBrains Mono',size:9}},title:{display:true,text:'RM',color:tc,font:{size:9}}},
+        y2:{position:'right',grid:{display:false},ticks:{color:tc,font:{family:'JetBrains Mono',size:9}},title:{display:true,text:'Tiket',color:tc,font:{size:9}}}
+      }
+    }
+  });
+}
+
+function makeTopList(elId, items, maxVal, barColor){
+  const ul = document.getElementById(elId);
+  ul.innerHTML = items.map((item,i)=>`
+    <li>
+      <span class="top-rank">${String(i+1).padStart(2,'0')}</span>
+      <span class="top-name">${item.name}</span>
+      <div class="top-bar-wrap"><div class="top-bar" style="width:${Math.round(item.val/maxVal*100)}%;background:${barColor}"></div></div>
+      <span class="top-val">${fmtN(item.val)}</span>
+    </li>`).join('');
+}
+
+function render(){
+  const year  = +document.getElementById('sel-year').value;
+  const month = +document.getElementById('sel-month').value;
+  const mNames = ['','Januari','Februari','Mac','April','Mei','Jun','Julai','Ogos','September','Oktober','November','Disember'];
+  document.getElementById('hdr-period').textContent = month===0 ? year+' — Semua Bulan' : year+' — '+mNames[month];
+
+  const d = genData(year, month);
+
+  // KPI Jualan
+  document.getElementById('k-ots-sales').textContent = fmt(d.oSales);
+  document.getElementById('k-bot-sales').textContent = fmt(d.bSales);
+  document.getElementById('k-easi-sales').textContent= fmt(d.eSales);
+  document.getElementById('k-red-sales').textContent = fmt(d.rSales);
+  document.getElementById('k-ots-pct').textContent   = pct(d.oSales,d.totalSales);
+  document.getElementById('k-bot-pct').textContent   = pct(d.bSales,d.totalSales);
+  document.getElementById('k-easi-pct').textContent  = pct(d.eSales,d.totalSales);
+  document.getElementById('k-red-pct').textContent   = pct(d.rSales,d.totalSales);
+
+  // KPI Tiket
+  document.getElementById('k-ots-tix').textContent  = fmtN(d.oTix);
+  document.getElementById('k-bot-tix').textContent  = fmtN(d.bTix);
+  document.getElementById('k-easi-tix').textContent = fmtN(d.eTix);
+  document.getElementById('k-red-tix').textContent  = fmtN(d.rTix);
+  document.getElementById('k-ots-tpct').textContent = pct(d.oTix,d.totalTix);
+  document.getElementById('k-bot-tpct').textContent = pct(d.bTix,d.totalTix);
+  document.getElementById('k-easi-tpct').textContent= pct(d.eTix,d.totalTix);
+  document.getElementById('k-red-tpct').textContent = pct(d.rTix,d.totalTix);
+
+  // API Fees
+  document.getElementById('api-bot').textContent        = fmt(d.botFee);
+  document.getElementById('api-easi').textContent       = fmt(d.easiFee);
+  document.getElementById('api-red').textContent        = fmt(d.redFee);
+  document.getElementById('api-red-refund').textContent = fmt(d.redRefund);
+  document.getElementById('api-total').textContent      = fmt(d.botFee+d.easiFee+d.redFee+d.redRefund);
+
+  // Charts
+  destroyAll();
+  const ots  = getComputedStyle(document.documentElement).getPropertyValue('--ots').trim();
+  const bot  = getComputedStyle(document.documentElement).getPropertyValue('--bot').trim();
+  const easi = getComputedStyle(document.documentElement).getPropertyValue('--easi').trim();
+  const red  = getComputedStyle(document.documentElement).getPropertyValue('--red').trim();
+
+  charts.ots  = makeLineBar('ch-ots', d.labels, d.oLine, d.oTixLine, '#3b82f6');
+  charts.bot  = makeLineBar('ch-bot', d.labels, d.bLine, d.bTixLine, '#10b981');
+  charts.easi = makeLineBar('ch-easi',d.labels, d.eLine, d.eTixLine, '#a78bfa');
+  charts.red  = makeLineBar('ch-red', d.labels, d.rLine, d.rTixLine, '#f87171');
+
+  // Market share doughnut
+  const shareColors = ['#3b82f6','#10b981','#a78bfa','#f87171'];
+  const shareLabels = ['OTS','BOT','EASI','RED'];
+  const shareSales  = [d.oSales,d.bSales,d.eSales,d.rSales];
+  const shareTix    = [d.oTix,d.bTix,d.eTix,d.rTix];
+  const shareTotal  = d.totalSales;
+  const shareTixTotal = d.totalTix;
+
+  charts.share = new Chart(document.getElementById('ch-share'),{
+    type:'doughnut',
+    data:{
+      labels: shareLabels,
+      datasets:[{
+        data: shareSales,
+        backgroundColor: shareColors,
+        borderWidth:0, hoverOffset:8
+      }]
+    },
+    options:{
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{label:ctx=>{
+          const p=(ctx.parsed/shareTotal*100).toFixed(1);
+          return ` ${ctx.label}: ${p}% — ${fmt(ctx.parsed)}`;
+        }}},
+        datalabels: false
+      },
+      cutout:'58%',
+      animation:{animateRotate:true}
+    },
+    plugins:[{
+      id:'pctLabels',
+      afterDraw(chart){
+        const {ctx,chartArea:{width,height,left,top}} = chart;
+        const cx = left+width/2, cy = top+height/2;
+        const meta = chart.getDatasetMeta(0);
+        meta.data.forEach((arc,i)=>{
+          const angle = (arc.startAngle+arc.endAngle)/2;
+          const r = (arc.outerRadius+arc.innerRadius)/2;
+          const x = cx + Math.cos(angle)*r;
+          const y = cy + Math.sin(angle)*r;
+          const p = (shareSales[i]/shareTotal*100).toFixed(1);
+          ctx.save();
+          ctx.font='500 11px JetBrains Mono,monospace';
+          ctx.fillStyle='#fff';
+          ctx.textAlign='center';
+          ctx.textBaseline='middle';
+          ctx.fillText(p+'%',x,y);
+          ctx.restore();
+        });
+      }
+    }]
+  });
+
+  // Breakdown table bawah chart
+  document.getElementById('share-breakdown').innerHTML = `
+    <div style="display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:4px 10px;font-family:var(--mono);font-size:10px;">
+      <div style="color:var(--muted2)"></div>
+      <div style="color:var(--muted);letter-spacing:.08em">JUALAN (RM)</div>
+      <div style="color:var(--muted);letter-spacing:.08em">TIKET</div>
+      <div style="color:var(--muted);letter-spacing:.08em">SHARE</div>
+      ${shareLabels.map((lbl,i)=>`
+      <div style="display:flex;align-items:center;gap:5px;">
+        <span style="width:7px;height:7px;border-radius:50%;background:${shareColors[i]};display:inline-block;flex-shrink:0"></span>
+        <span style="color:${shareColors[i]};font-weight:500">${lbl}</span>
+      </div>
+      <div style="color:var(--text)">${fmt(shareSales[i])}</div>
+      <div style="color:var(--text)">${fmtN(shareTix[i])}</div>
+      <div style="color:${shareColors[i]};font-weight:500">${(shareSales[i]/shareTotal*100).toFixed(1)}%</div>
+      `).join('')}
+      <div style="color:var(--muted);padding-top:4px;border-top:1px solid var(--b)">JUMLAH</div>
+      <div style="color:var(--text);padding-top:4px;border-top:1px solid var(--b);font-weight:500">${fmt(shareTotal)}</div>
+      <div style="color:var(--text);padding-top:4px;border-top:1px solid var(--b);font-weight:500">${fmtN(shareTixTotal)}</div>
+      <div style="color:var(--muted);padding-top:4px;border-top:1px solid var(--b)">100%</div>
+    </div>
+  `;
+
+  // Top lists
+  const maxFrom = d.topFrom[0].val;
+  const maxTo   = d.topTo[0].val;
+  const maxOps  = d.topOps[0].val;
+  makeTopList('top-from', d.topFrom, maxFrom, '#3b82f6');
+  makeTopList('top-to',   d.topTo,   maxTo,   '#a78bfa');
+  makeTopList('top-ops',  d.topOps,  maxOps,  '#f59e0b');
+}
+
+function resetFilter(){
+  document.getElementById('sel-year').value='2025';
+  document.getElementById('sel-month').value='4';
+  render();
+}
+
+render();
+</script>
+</body>
+</html>
