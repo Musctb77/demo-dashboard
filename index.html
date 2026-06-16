@@ -115,15 +115,15 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
     <div class="eyebrow">Sistem Pengurusan Jualan Bas</div>
     <h1>Dashboard <span id="hdr-period">2025 — April</span></h1>
   </div>
-  <div class="live-badge"><span class="live-dot"></span>Data Demo</div>
+  <div class="live-badge"><span class="live-dot"></span>Data Sebenar</div>
 </header>
 
 <!-- Filters -->
 <div class="filters">
   <span class="filter-label">Tapis :</span>
   <select id="sel-year" onchange="render()">
-    <option value="2025">2025</option>
-    <option value="2024">2024</option>
+    <option value="2026">2026</option>
+    <option value="2025" selected>2025</option>
   </select>
   <select id="sel-month" onchange="render()">
     <option value="0">Semua Bulan</option>
@@ -285,116 +285,136 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
 </div>
 
 <script>
-// ── Seed random dengan key supaya consistent per filter ──
-function seededRand(seed){
-  let s=seed;
-  return function(){s=(s*16807+0)%2147483647;return(s-1)/2147483646;};
-}
-
-// ── Generate data demo berdasarkan tahun+bulan ──
-function genData(year, month){
-  const key = year*100+month;
-  const r = seededRand(key);
-  const months = month===0?12:1;
-  const scale = months * (0.8 + r()*0.4);
-
-  const oSales = Math.round(120000*scale + r()*40000);
-  const bSales = Math.round(85000*scale  + r()*30000);
-  const eSales = Math.round(60000*scale  + r()*20000);
-  const rSales = Math.round(40000*scale  + r()*15000);
-  const totalSales = oSales+bSales+eSales+rSales;
-
-  const oTix = Math.round(oSales/68 + r()*50);
-  const bTix = Math.round(bSales/72 + r()*40);
-  const eTix = Math.round(eSales/65 + r()*30);
-  const rTix = Math.round(rSales/60 + r()*25);
-  const totalTix = oTix+bTix+eTix+rTix;
-
-  const botFee    = Math.round(bSales*0.018);
-  const easiFee   = Math.round(eSales*0.022);
-  const redFee    = Math.round(rSales*0.025);
-  const redRefund = Math.round(rSales*0.008 + r()*1200);
-
-  const MONTHS = ['Jan','Feb','Mac','Apr','Mei','Jun','Jul','Ogo','Sep','Okt','Nov','Dis'];
-  const labels = month===0 ? MONTHS : MONTHS.slice(0,month);
-  const mkLine = (base,noise) => labels.map((_,i)=>{
-    const rr=seededRand(key+i*7+base);
-    return Math.round(base*(0.7+i*0.025)+rr()*noise);
-  });
-
-  const fromCities=['Kuala Lumpur','Johor Bahru','Penang','Ipoh','Melaka','Kota Bharu','Kuantan','Seremban'];
-  const toCities  =['Johor Bahru','Penang','Kuala Lumpur','Ipoh','Kuantan','Melaka','Kota Kinabalu','Kuching'];
-  const operators =['Transnasional','Konsortium','KKKL','Plusliner','CatchExpress','StarMart','Five Stars','Mutiara'];
-
-  const topFrom = fromCities.slice(0,5).map((c,i)=>{
-    const rr=seededRand(key+i*3+1);
-    return {name:c, val:Math.round(180+rr()*320)};
-  }).sort((a,b)=>b.val-a.val);
-
-  const topTo = toCities.slice(0,5).map((c,i)=>{
-    const rr=seededRand(key+i*3+2);
-    return {name:c, val:Math.round(150+rr()*300)};
-  }).sort((a,b)=>b.val-a.val);
-
-  const topOps = operators.slice(0,5).map((o,i)=>{
-    const rr=seededRand(key+i*3+3);
-    return {name:o, val:Math.round(8000+rr()*35000)};
-  }).sort((a,b)=>b.val-a.val);
-
-  return {
-    oSales,bSales,eSales,rSales,totalSales,
-    oTix,bTix,eTix,rTix,totalTix,
-    botFee,easiFee,redFee,redRefund,
-    labels,
-    oLine:mkLine(oSales/labels.length,15000),
-    bLine:mkLine(bSales/labels.length,10000),
-    eLine:mkLine(eSales/labels.length,8000),
-    rLine:mkLine(rSales/labels.length,6000),
-    oTixLine:mkLine(oTix/labels.length,80),
-    bTixLine:mkLine(bTix/labels.length,60),
-    eTixLine:mkLine(eTix/labels.length,50),
-    rTixLine:mkLine(rTix/labels.length,40),
-    topFrom, topTo, topOps
-  };
-}
+// ── Global data store ──
+let DB = {};  // akan diisi dari data.json
 
 // ── Helpers ──
-const fmt = n => 'RM '+n.toLocaleString('ms-MY');
-const fmtN = n => n.toLocaleString('ms-MY');
-const pct = (a,b) => b===0?'0%':(a/b*100).toFixed(1)+'%';
-const gc = 'rgba(31,45,69,0.6)';
-const tc = '#c9d4e8';
-const baseOpts = {
-  plugins:{legend:{display:false}},
-  scales:{
-    x:{grid:{color:gc},ticks:{color:tc,font:{family:'JetBrains Mono',size:10}}},
-    y:{grid:{color:gc},ticks:{color:tc,font:{family:'JetBrains Mono',size:10}}}
-  }
-};
+const fmt  = n => 'RM ' + (+n).toLocaleString('ms-MY', {minimumFractionDigits:2, maximumFractionDigits:2});
+const fmtN = n => (+n).toLocaleString('ms-MY');
+const pct  = (a,b) => b===0 ? '0%' : (a/b*100).toFixed(1)+'%';
+const gc   = 'rgba(31,45,69,0.6)';
+const tc   = '#c9d4e8';
 
-// Store chart instances
 let charts = {};
-
 function destroyAll(){
   Object.values(charts).forEach(c=>{try{c.destroy();}catch(e){}});
   charts={};
 }
 
+// ── Aggregate data ikut year+month filter ──
+function getFiltered(year, month){
+  const keys = Object.keys(DB.months || {});
+
+  // Kumpul semua bulan yang match filter
+  const matched = keys.filter(k => {
+    const m = DB.months[k];
+    if(m.year !== year) return false;
+    if(month !== 0 && m.month_num !== month) return false;
+    return true;
+  });
+
+  if(matched.length === 0) return null;
+
+  // Aggregate semua bulan yang match
+  let oSales=0, bSales=0, eSales=0, rSales=0;
+  let oTix=0, bTix=0, eTix=0, rTix=0;
+  let botFee=0, easiFee=0, redFee=0, redRefund=0;
+  let fromMap={}, toMap={}, opsMap={};
+
+  matched.forEach(k => {
+    const m = DB.months[k];
+    oSales += m.sales.OTS  || 0;
+    bSales += m.sales.BOT  || 0;
+    eSales += m.sales.EASI || 0;
+    rSales += m.sales.RED  || 0;
+    oTix   += m.tickets.OTS  || 0;
+    bTix   += m.tickets.BOT  || 0;
+    eTix   += m.tickets.EASI || 0;
+    rTix   += m.tickets.RED  || 0;
+    botFee    += m.api_fees.BOT        || 0;
+    easiFee   += m.api_fees.EASI       || 0;
+    redFee    += m.api_fees.RED        || 0;
+    redRefund += m.api_fees.RED_refund || 0;
+
+    (m.top_from||[]).forEach(r=>{ fromMap[r.name] = (fromMap[r.name]||0) + r.val; });
+    (m.top_to  ||[]).forEach(r=>{ toMap[r.name]   = (toMap[r.name]  ||0) + r.val; });
+    (m.top_ops ||[]).forEach(r=>{ opsMap[r.name]  = (opsMap[r.name] ||0) + r.val; });
+  });
+
+  const topN = (map,n=5) => Object.entries(map)
+    .map(([name,val])=>({name,val}))
+    .sort((a,b)=>b.val-a.val).slice(0,n);
+
+  // Chart labels — bulan ikut tahun (untuk "Semua Bulan") atau bulan2 dalam tahun tu
+  const MONTH_NAMES = ['Jan','Feb','Mac','Apr','Mei','Jun','Jul','Ogo','Sep','Okt','Nov','Dis'];
+  let labels=[], oLine=[], bLine=[], eLine=[], rLine=[];
+  let oTixLine=[], bTixLine=[], eTixLine=[], rTixLine=[];
+
+  if(month === 0){
+    // Semua bulan dalam tahun — tunjuk trend bulanan
+    for(let mn=1; mn<=12; mn++){
+      const k = `${year}-${String(mn).padStart(2,'0')}`;
+      const m = DB.months[k];
+      labels.push(MONTH_NAMES[mn-1]);
+      oLine.push(m ? (m.sales.OTS||0)  : 0);
+      bLine.push(m ? (m.sales.BOT||0)  : 0);
+      eLine.push(m ? (m.sales.EASI||0) : 0);
+      rLine.push(m ? (m.sales.RED||0)  : 0);
+      oTixLine.push(m ? (m.tickets.OTS||0)  : 0);
+      bTixLine.push(m ? (m.tickets.BOT||0)  : 0);
+      eTixLine.push(m ? (m.tickets.EASI||0) : 0);
+      rTixLine.push(m ? (m.tickets.RED||0)  : 0);
+    }
+  } else {
+    // Bulan spesifik — tunjuk data bulan sebelumnya untuk context (6 bulan)
+    for(let i=5; i>=0; i--){
+      let mn = month - i;
+      let yr = year;
+      if(mn <= 0){ mn += 12; yr -= 1; }
+      const k = `${yr}-${String(mn).padStart(2,'0')}`;
+      const m = DB.months[k];
+      labels.push(MONTH_NAMES[mn-1]);
+      oLine.push(m ? (m.sales.OTS||0)  : 0);
+      bLine.push(m ? (m.sales.BOT||0)  : 0);
+      eLine.push(m ? (m.sales.EASI||0) : 0);
+      rLine.push(m ? (m.sales.RED||0)  : 0);
+      oTixLine.push(m ? (m.tickets.OTS||0)  : 0);
+      bTixLine.push(m ? (m.tickets.BOT||0)  : 0);
+      eTixLine.push(m ? (m.tickets.EASI||0) : 0);
+      rTixLine.push(m ? (m.tickets.RED||0)  : 0);
+    }
+  }
+
+  return {
+    oSales, bSales, eSales, rSales,
+    totalSales: oSales+bSales+eSales+rSales,
+    oTix, bTix, eTix, rTix,
+    totalTix: oTix+bTix+eTix+rTix,
+    botFee, easiFee, redFee, redRefund,
+    labels, oLine, bLine, eLine, rLine,
+    oTixLine, bTixLine, eTixLine, rTixLine,
+    topFrom: topN(fromMap),
+    topTo:   topN(toMap),
+    topOps:  topN(opsMap)
+  };
+}
+
+// ── Chart helpers ──
 function makeLineBar(id, labels, salesData, tixData, color){
   const ctx = document.getElementById(id);
   return new Chart(ctx,{
     data:{
       labels,
       datasets:[
-        {type:'bar',label:'Jualan',data:salesData,backgroundColor:color+'33',borderColor:color,borderWidth:1,borderRadius:3,yAxisID:'y'},
-        {type:'line',label:'Tiket',data:tixData,borderColor:color,backgroundColor:'transparent',tension:0.4,pointRadius:3,pointBackgroundColor:color,yAxisID:'y2'}
+        {type:'bar', label:'Jualan', data:salesData, backgroundColor:color+'33', borderColor:color, borderWidth:1, borderRadius:3, yAxisID:'y'},
+        {type:'line',label:'Tiket',  data:tixData,   borderColor:color, backgroundColor:'transparent', tension:0.4, pointRadius:3, pointBackgroundColor:color, yAxisID:'y2'}
       ]
     },
     options:{
       plugins:{legend:{display:true,labels:{color:tc,font:{family:'JetBrains Mono',size:10},boxWidth:8,padding:10}}},
       scales:{
-        x:{grid:{color:gc},ticks:{color:tc,font:{family:'JetBrains Mono',size:9},maxRotation:45}},
-        y:{grid:{color:gc},ticks:{color:tc,font:{family:'JetBrains Mono',size:9}},title:{display:true,text:'RM',color:tc,font:{size:9}}},
+        x: {grid:{color:gc},ticks:{color:tc,font:{family:'JetBrains Mono',size:9},maxRotation:45}},
+        y: {grid:{color:gc},ticks:{color:tc,font:{family:'JetBrains Mono',size:9}},title:{display:true,text:'RM',color:tc,font:{size:9}}},
         y2:{position:'right',grid:{display:false},ticks:{color:tc,font:{family:'JetBrains Mono',size:9}},title:{display:true,text:'Tiket',color:tc,font:{size:9}}}
       }
     }
@@ -403,42 +423,49 @@ function makeLineBar(id, labels, salesData, tixData, color){
 
 function makeTopList(elId, items, maxVal, barColor){
   const ul = document.getElementById(elId);
+  if(!items || items.length===0){ ul.innerHTML='<li style="color:var(--muted);font-size:12px">Tiada data</li>'; return; }
   ul.innerHTML = items.map((item,i)=>`
     <li>
       <span class="top-rank">${String(i+1).padStart(2,'0')}</span>
       <span class="top-name">${item.name}</span>
       <div class="top-bar-wrap"><div class="top-bar" style="width:${Math.round(item.val/maxVal*100)}%;background:${barColor}"></div></div>
-      <span class="top-val">${fmtN(item.val)}</span>
+      <span class="top-val">${fmtN(Math.round(item.val))}</span>
     </li>`).join('');
 }
 
+// ── Main render ──
 function render(){
   const year  = +document.getElementById('sel-year').value;
   const month = +document.getElementById('sel-month').value;
   const mNames = ['','Januari','Februari','Mac','April','Mei','Jun','Julai','Ogos','September','Oktober','November','Disember'];
   document.getElementById('hdr-period').textContent = month===0 ? year+' — Semua Bulan' : year+' — '+mNames[month];
 
-  const d = genData(year, month);
+  const d = getFiltered(year, month);
+
+  if(!d){
+    document.getElementById('hdr-period').textContent += ' (tiada data)';
+    return;
+  }
 
   // KPI Jualan
-  document.getElementById('k-ots-sales').textContent = fmt(d.oSales);
-  document.getElementById('k-bot-sales').textContent = fmt(d.bSales);
-  document.getElementById('k-easi-sales').textContent= fmt(d.eSales);
-  document.getElementById('k-red-sales').textContent = fmt(d.rSales);
-  document.getElementById('k-ots-pct').textContent   = pct(d.oSales,d.totalSales);
-  document.getElementById('k-bot-pct').textContent   = pct(d.bSales,d.totalSales);
-  document.getElementById('k-easi-pct').textContent  = pct(d.eSales,d.totalSales);
-  document.getElementById('k-red-pct').textContent   = pct(d.rSales,d.totalSales);
+  document.getElementById('k-ots-sales').textContent  = fmt(d.oSales);
+  document.getElementById('k-bot-sales').textContent  = fmt(d.bSales);
+  document.getElementById('k-easi-sales').textContent = fmt(d.eSales);
+  document.getElementById('k-red-sales').textContent  = fmt(d.rSales);
+  document.getElementById('k-ots-pct').textContent    = pct(d.oSales,d.totalSales);
+  document.getElementById('k-bot-pct').textContent    = pct(d.bSales,d.totalSales);
+  document.getElementById('k-easi-pct').textContent   = pct(d.eSales,d.totalSales);
+  document.getElementById('k-red-pct').textContent    = pct(d.rSales,d.totalSales);
 
   // KPI Tiket
-  document.getElementById('k-ots-tix').textContent  = fmtN(d.oTix);
-  document.getElementById('k-bot-tix').textContent  = fmtN(d.bTix);
-  document.getElementById('k-easi-tix').textContent = fmtN(d.eTix);
-  document.getElementById('k-red-tix').textContent  = fmtN(d.rTix);
-  document.getElementById('k-ots-tpct').textContent = pct(d.oTix,d.totalTix);
-  document.getElementById('k-bot-tpct').textContent = pct(d.bTix,d.totalTix);
-  document.getElementById('k-easi-tpct').textContent= pct(d.eTix,d.totalTix);
-  document.getElementById('k-red-tpct').textContent = pct(d.rTix,d.totalTix);
+  document.getElementById('k-ots-tix').textContent   = fmtN(d.oTix);
+  document.getElementById('k-bot-tix').textContent   = fmtN(d.bTix);
+  document.getElementById('k-easi-tix').textContent  = fmtN(d.eTix);
+  document.getElementById('k-red-tix').textContent   = fmtN(d.rTix);
+  document.getElementById('k-ots-tpct').textContent  = pct(d.oTix,d.totalTix);
+  document.getElementById('k-bot-tpct').textContent  = pct(d.bTix,d.totalTix);
+  document.getElementById('k-easi-tpct').textContent = pct(d.eTix,d.totalTix);
+  document.getElementById('k-red-tpct').textContent  = pct(d.rTix,d.totalTix);
 
   // API Fees
   document.getElementById('api-bot').textContent        = fmt(d.botFee);
@@ -449,33 +476,23 @@ function render(){
 
   // Charts
   destroyAll();
-  const ots  = getComputedStyle(document.documentElement).getPropertyValue('--ots').trim();
-  const bot  = getComputedStyle(document.documentElement).getPropertyValue('--bot').trim();
-  const easi = getComputedStyle(document.documentElement).getPropertyValue('--easi').trim();
-  const red  = getComputedStyle(document.documentElement).getPropertyValue('--red').trim();
-
-  charts.ots  = makeLineBar('ch-ots', d.labels, d.oLine, d.oTixLine, '#3b82f6');
-  charts.bot  = makeLineBar('ch-bot', d.labels, d.bLine, d.bTixLine, '#10b981');
-  charts.easi = makeLineBar('ch-easi',d.labels, d.eLine, d.eTixLine, '#a78bfa');
-  charts.red  = makeLineBar('ch-red', d.labels, d.rLine, d.rTixLine, '#f87171');
+  charts.ots  = makeLineBar('ch-ots',  d.labels, d.oLine, d.oTixLine, '#3b82f6');
+  charts.bot  = makeLineBar('ch-bot',  d.labels, d.bLine, d.bTixLine, '#10b981');
+  charts.easi = makeLineBar('ch-easi', d.labels, d.eLine, d.eTixLine, '#a78bfa');
+  charts.red  = makeLineBar('ch-red',  d.labels, d.rLine, d.rTixLine, '#f87171');
 
   // Market share doughnut
   const shareColors = ['#3b82f6','#10b981','#a78bfa','#f87171'];
-  const shareLabels = ['OTS','BOT','EASI','RED'];
-  const shareSales  = [d.oSales,d.bSales,d.eSales,d.rSales];
-  const shareTix    = [d.oTix,d.bTix,d.eTix,d.rTix];
+  const shareSales  = [d.oSales, d.bSales, d.eSales, d.rSales];
+  const shareTix    = [d.oTix,   d.bTix,   d.eTix,   d.rTix];
   const shareTotal  = d.totalSales;
   const shareTixTotal = d.totalTix;
 
   charts.share = new Chart(document.getElementById('ch-share'),{
     type:'doughnut',
     data:{
-      labels: shareLabels,
-      datasets:[{
-        data: shareSales,
-        backgroundColor: shareColors,
-        borderWidth:0, hoverOffset:8
-      }]
+      labels:['OTS','BOT','EASI','RED'],
+      datasets:[{data:shareSales, backgroundColor:shareColors, borderWidth:0, hoverOffset:8}]
     },
     options:{
       plugins:{
@@ -483,24 +500,21 @@ function render(){
         tooltip:{callbacks:{label:ctx=>{
           const p=(ctx.parsed/shareTotal*100).toFixed(1);
           return ` ${ctx.label}: ${p}% — ${fmt(ctx.parsed)}`;
-        }}},
-        datalabels: false
+        }}}
       },
       cutout:'58%',
-      animation:{animateRotate:true}
     },
     plugins:[{
       id:'pctLabels',
       afterDraw(chart){
-        const {ctx,chartArea:{width,height,left,top}} = chart;
-        const cx = left+width/2, cy = top+height/2;
-        const meta = chart.getDatasetMeta(0);
+        const {ctx,chartArea:{width,height,left,top}}=chart;
+        const cx=left+width/2, cy=top+height/2;
+        const meta=chart.getDatasetMeta(0);
         meta.data.forEach((arc,i)=>{
-          const angle = (arc.startAngle+arc.endAngle)/2;
-          const r = (arc.outerRadius+arc.innerRadius)/2;
-          const x = cx + Math.cos(angle)*r;
-          const y = cy + Math.sin(angle)*r;
-          const p = (shareSales[i]/shareTotal*100).toFixed(1);
+          const angle=(arc.startAngle+arc.endAngle)/2;
+          const r=(arc.outerRadius+arc.innerRadius)/2;
+          const x=cx+Math.cos(angle)*r, y=cy+Math.sin(angle)*r;
+          const p=(shareSales[i]/shareTotal*100).toFixed(1);
           ctx.save();
           ctx.font='500 11px JetBrains Mono,monospace';
           ctx.fillStyle='#fff';
@@ -513,16 +527,16 @@ function render(){
     }]
   });
 
-  // Breakdown table bawah chart
+  // Breakdown table market share
   document.getElementById('share-breakdown').innerHTML = `
     <div style="display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:4px 10px;font-family:var(--mono);font-size:10px;">
-      <div style="color:var(--muted2)"></div>
+      <div></div>
       <div style="color:var(--muted);letter-spacing:.08em">JUALAN (RM)</div>
       <div style="color:var(--muted);letter-spacing:.08em">TIKET</div>
       <div style="color:var(--muted);letter-spacing:.08em">SHARE</div>
-      ${shareLabels.map((lbl,i)=>`
+      ${['OTS','BOT','EASI','RED'].map((lbl,i)=>`
       <div style="display:flex;align-items:center;gap:5px;">
-        <span style="width:7px;height:7px;border-radius:50%;background:${shareColors[i]};display:inline-block;flex-shrink:0"></span>
+        <span style="width:7px;height:7px;border-radius:50%;background:${shareColors[i]};display:inline-block"></span>
         <span style="color:${shareColors[i]};font-weight:500">${lbl}</span>
       </div>
       <div style="color:var(--text)">${fmt(shareSales[i])}</div>
@@ -537,9 +551,9 @@ function render(){
   `;
 
   // Top lists
-  const maxFrom = d.topFrom[0].val;
-  const maxTo   = d.topTo[0].val;
-  const maxOps  = d.topOps[0].val;
+  const maxFrom = d.topFrom[0]?.val || 1;
+  const maxTo   = d.topTo[0]?.val   || 1;
+  const maxOps  = d.topOps[0]?.val  || 1;
   makeTopList('top-from', d.topFrom, maxFrom, '#3b82f6');
   makeTopList('top-to',   d.topTo,   maxTo,   '#a78bfa');
   makeTopList('top-ops',  d.topOps,  maxOps,  '#f59e0b');
@@ -547,11 +561,35 @@ function render(){
 
 function resetFilter(){
   document.getElementById('sel-year').value='2025';
-  document.getElementById('sel-month').value='4';
+  document.getElementById('sel-month').value='0';
   render();
 }
 
-render();
+// ── Load data.json dan init ──
+async function init(){
+  try {
+    const res = await fetch('data.json?v=' + Date.now());
+    if(!res.ok) throw new Error('Gagal fetch data.json');
+    DB = await res.json();
+
+    // Auto-populate year filter dari data yang ada
+    const years = [...new Set(Object.values(DB.months).map(m=>m.year))].sort((a,b)=>b-a);
+    const selYear = document.getElementById('sel-year');
+    selYear.innerHTML = years.map(y=>`<option value="${y}">${y}</option>`).join('');
+
+    // Default: tahun terkini, semua bulan
+    selYear.value = years[0];
+    document.getElementById('sel-month').value = '0';
+
+    render();
+  } catch(e) {
+    console.error(e);
+    document.getElementById('hdr-period').textContent = 'Gagal memuatkan data';
+  }
+}
+
+init();
 </script>
+
 </body>
 </html>
