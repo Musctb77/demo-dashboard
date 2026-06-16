@@ -1,0 +1,1501 @@
+{
+  "generated": "2026-06-16T13:13:37.882441",
+  "months": {
+    "2025-01": {
+      "year": 2025,
+      "month_num": 1,
+      "sales": {
+        "OTS": 0.0,
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0
+      },
+      "tickets": {
+        "OTS": 0,
+        "BOT": 0,
+        "EASI": 0,
+        "RED": 0
+      },
+      "api_fees": {
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0,
+        "RED_refund": 11701.0
+      },
+      "top_from": [
+        {
+          "name": "TBS",
+          "val": 3230272.89
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1379549.16
+        },
+        {
+          "name": "Shah Alam",
+          "val": 816129.9
+        },
+        {
+          "name": "K Terengganu",
+          "val": 757312.9
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 678454.8
+        }
+      ],
+      "top_to": [
+        {
+          "name": "TBS",
+          "val": 2838642.02
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1541348.04
+        },
+        {
+          "name": "K Terengganu",
+          "val": 800613.7
+        },
+        {
+          "name": "Shah Alam",
+          "val": 737148.65
+        },
+        {
+          "name": "Kuantan",
+          "val": 694897.17
+        }
+      ],
+      "top_ops": [
+        {
+          "name": "Ekspress Mutiara",
+          "val": 2221632.45
+        },
+        {
+          "name": "Perdana Ekspres",
+          "val": 1966647.8
+        },
+        {
+          "name": "Mayang Sari",
+          "val": 1966516.9
+        },
+        {
+          "name": "Maraliner",
+          "val": 1203707.8
+        },
+        {
+          "name": "Sani Express",
+          "val": 1149631.1
+        }
+      ]
+    },
+    "2025-02": {
+      "year": 2025,
+      "month_num": 2,
+      "sales": {
+        "OTS": 0.0,
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0
+      },
+      "tickets": {
+        "OTS": 0,
+        "BOT": 0,
+        "EASI": 0,
+        "RED": 0
+      },
+      "api_fees": {
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0,
+        "RED_refund": 7887.0
+      },
+      "top_from": [
+        {
+          "name": "TBS",
+          "val": 2891937.88
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1173572.48
+        },
+        {
+          "name": "Shah Alam",
+          "val": 709231.8
+        },
+        {
+          "name": "K Terengganu",
+          "val": 649546.5
+        },
+        {
+          "name": "Kuantan",
+          "val": 616425.26
+        }
+      ],
+      "top_to": [
+        {
+          "name": "TBS",
+          "val": 2535156.43
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1387789.5
+        },
+        {
+          "name": "K Terengganu",
+          "val": 700471.7
+        },
+        {
+          "name": "Shah Alam",
+          "val": 617644.85
+        },
+        {
+          "name": "Kuantan",
+          "val": 612893.33
+        }
+      ],
+      "top_ops": [
+        {
+          "name": "Ekspress Mutiara",
+          "val": 1880303.67
+        },
+        {
+          "name": "Perdana Ekspres",
+          "val": 1768565.4
+        },
+        {
+          "name": "Mayang Sari",
+          "val": 1644019.9
+        },
+        {
+          "name": "Maraliner",
+          "val": 1148896.1
+        },
+        {
+          "name": "Pancaran",
+          "val": 1109960.0
+        }
+      ]
+    },
+    "2025-03": {
+      "year": 2025,
+      "month_num": 3,
+      "sales": {
+        "OTS": 0.0,
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0
+      },
+      "tickets": {
+        "OTS": 0,
+        "BOT": 0,
+        "EASI": 0,
+        "RED": 0
+      },
+      "api_fees": {
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0,
+        "RED_refund": 10444.0
+      },
+      "top_from": [
+        {
+          "name": "TBS",
+          "val": 3000901.97
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1329678.2
+        },
+        {
+          "name": "K Terengganu",
+          "val": 724929.0
+        },
+        {
+          "name": "Kuantan",
+          "val": 691784.53
+        },
+        {
+          "name": "Shah Alam",
+          "val": 669429.65
+        }
+      ],
+      "top_to": [
+        {
+          "name": "TBS",
+          "val": 2803126.76
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1457099.0
+        },
+        {
+          "name": "K Terengganu",
+          "val": 753949.7
+        },
+        {
+          "name": "Kuantan",
+          "val": 665247.42
+        },
+        {
+          "name": "Shah Alam",
+          "val": 655050.4
+        }
+      ],
+      "top_ops": [
+        {
+          "name": "Perdana Ekspres",
+          "val": 1879059.2
+        },
+        {
+          "name": "Ekspress Mutiara",
+          "val": 1877472.76
+        },
+        {
+          "name": "Mayang Sari",
+          "val": 1734485.2
+        },
+        {
+          "name": "Maraliner",
+          "val": 1161523.0
+        },
+        {
+          "name": "Pancaran",
+          "val": 1071665.0
+        }
+      ]
+    },
+    "2025-04": {
+      "year": 2025,
+      "month_num": 4,
+      "sales": {
+        "OTS": 0.0,
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0
+      },
+      "tickets": {
+        "OTS": 0,
+        "BOT": 0,
+        "EASI": 0,
+        "RED": 0
+      },
+      "api_fees": {
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0,
+        "RED_refund": 9137.0
+      },
+      "top_from": [
+        {
+          "name": "TBS",
+          "val": 2507356.57
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1156751.6
+        },
+        {
+          "name": "K Terengganu",
+          "val": 629469.9
+        },
+        {
+          "name": "Shah Alam",
+          "val": 619471.8
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 575984.2
+        }
+      ],
+      "top_to": [
+        {
+          "name": "TBS",
+          "val": 2483670.1
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1163754.5
+        },
+        {
+          "name": "Shah Alam",
+          "val": 645426.3
+        },
+        {
+          "name": "K Terengganu",
+          "val": 607192.4
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 600813.5
+        }
+      ],
+      "top_ops": [
+        {
+          "name": "Ekspress Mutiara",
+          "val": 1932829.4
+        },
+        {
+          "name": "Mayang Sari",
+          "val": 1631396.1
+        },
+        {
+          "name": "Perdana Ekspres",
+          "val": 1586696.9
+        },
+        {
+          "name": "Maraliner",
+          "val": 1064480.6
+        },
+        {
+          "name": "Pancaran",
+          "val": 984475.0
+        }
+      ]
+    },
+    "2025-05": {
+      "year": 2025,
+      "month_num": 5,
+      "sales": {
+        "OTS": 0.0,
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0
+      },
+      "tickets": {
+        "OTS": 0,
+        "BOT": 0,
+        "EASI": 0,
+        "RED": 0
+      },
+      "api_fees": {
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0,
+        "RED_refund": 10263.0
+      },
+      "top_from": [
+        {
+          "name": "TBS",
+          "val": 3399273.73
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1605962.7
+        },
+        {
+          "name": "Shah Alam",
+          "val": 1012684.9
+        },
+        {
+          "name": "K Terengganu",
+          "val": 769997.9
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 747832.1
+        }
+      ],
+      "top_to": [
+        {
+          "name": "TBS",
+          "val": 2979267.55
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1885622.7
+        },
+        {
+          "name": "Shah Alam",
+          "val": 873814.5
+        },
+        {
+          "name": "K Terengganu",
+          "val": 832989.1
+        },
+        {
+          "name": "Kuantan",
+          "val": 773651.3
+        }
+      ],
+      "top_ops": [
+        {
+          "name": "Perdana Ekspres",
+          "val": 2608489.46
+        },
+        {
+          "name": "Ekspress Mutiara",
+          "val": 2445732.6
+        },
+        {
+          "name": "Mayang Sari",
+          "val": 2024983.7
+        },
+        {
+          "name": "Pancaran",
+          "val": 1522160.0
+        },
+        {
+          "name": "Sani Express",
+          "val": 1297908.5
+        }
+      ]
+    },
+    "2025-06": {
+      "year": 2025,
+      "month_num": 6,
+      "sales": {
+        "OTS": 0.0,
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0
+      },
+      "tickets": {
+        "OTS": 0,
+        "BOT": 0,
+        "EASI": 0,
+        "RED": 0
+      },
+      "api_fees": {
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0,
+        "RED_refund": 8474.0
+      },
+      "top_from": [
+        {
+          "name": "TBS",
+          "val": 2569340.15
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1075953.1
+        },
+        {
+          "name": "K Terengganu",
+          "val": 676358.4
+        },
+        {
+          "name": "Shah Alam",
+          "val": 591966.75
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 583018.3
+        }
+      ],
+      "top_to": [
+        {
+          "name": "TBS",
+          "val": 2442419.3
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1107083.5
+        },
+        {
+          "name": "K Terengganu",
+          "val": 676174.1
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 651636.9
+        },
+        {
+          "name": "Shah Alam",
+          "val": 605326.0
+        }
+      ],
+      "top_ops": [
+        {
+          "name": "Ekspress Mutiara",
+          "val": 1776654.2
+        },
+        {
+          "name": "Mayang Sari",
+          "val": 1689003.5
+        },
+        {
+          "name": "Perdana Ekspres",
+          "val": 1511648.92
+        },
+        {
+          "name": "Pancaran",
+          "val": 1124700.0
+        },
+        {
+          "name": "Sani United Berhad",
+          "val": 924576.8
+        }
+      ]
+    },
+    "2025-07": {
+      "year": 2025,
+      "month_num": 7,
+      "sales": {
+        "OTS": 0.0,
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0
+      },
+      "tickets": {
+        "OTS": 0,
+        "BOT": 0,
+        "EASI": 0,
+        "RED": 0
+      },
+      "api_fees": {
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0,
+        "RED_refund": 6552.0
+      },
+      "top_from": [
+        {
+          "name": "TBS",
+          "val": 2447308.65
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 980579.0
+        },
+        {
+          "name": "K Terengganu",
+          "val": 812962.6
+        },
+        {
+          "name": "Shah Alam",
+          "val": 659925.85
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 585620.9
+        }
+      ],
+      "top_to": [
+        {
+          "name": "TBS",
+          "val": 2271498.9
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1128210.2
+        },
+        {
+          "name": "K Terengganu",
+          "val": 857800.4
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 613240.9
+        },
+        {
+          "name": "Shah Alam",
+          "val": 596022.1
+        }
+      ],
+      "top_ops": [
+        {
+          "name": "Ekspress Mutiara",
+          "val": 1797077.8
+        },
+        {
+          "name": "Perdana Ekspres",
+          "val": 1729374.6
+        },
+        {
+          "name": "Mayang Sari",
+          "val": 1637512.0
+        },
+        {
+          "name": "Sani United Berhad",
+          "val": 1150209.6
+        },
+        {
+          "name": "Pancaran",
+          "val": 1008261.1
+        }
+      ]
+    },
+    "2025-08": {
+      "year": 2025,
+      "month_num": 8,
+      "sales": {
+        "OTS": 0.0,
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0
+      },
+      "tickets": {
+        "OTS": 0,
+        "BOT": 0,
+        "EASI": 0,
+        "RED": 0
+      },
+      "api_fees": {
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0,
+        "RED_refund": 7878.0
+      },
+      "top_from": [
+        {
+          "name": "TBS",
+          "val": 2757129.15
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1145162.7
+        },
+        {
+          "name": "K Terengganu",
+          "val": 887035.0
+        },
+        {
+          "name": "Shah Alam",
+          "val": 709002.2
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 687893.7
+        }
+      ],
+      "top_to": [
+        {
+          "name": "TBS",
+          "val": 2503680.4
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1261119.5
+        },
+        {
+          "name": "K Terengganu",
+          "val": 905093.3
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 677491.0
+        },
+        {
+          "name": "Shah Alam",
+          "val": 649536.85
+        }
+      ],
+      "top_ops": [
+        {
+          "name": "Ekspress Mutiara",
+          "val": 1999288.1
+        },
+        {
+          "name": "Perdana Ekspres",
+          "val": 1905786.2
+        },
+        {
+          "name": "Mayang Sari",
+          "val": 1737852.9
+        },
+        {
+          "name": "Sani United Berhad",
+          "val": 1219552.0
+        },
+        {
+          "name": "Pancaran",
+          "val": 1111887.9
+        }
+      ]
+    },
+    "2025-09": {
+      "year": 2025,
+      "month_num": 9,
+      "sales": {
+        "OTS": 0.0,
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0
+      },
+      "tickets": {
+        "OTS": 0,
+        "BOT": 0,
+        "EASI": 0,
+        "RED": 0
+      },
+      "api_fees": {
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0,
+        "RED_refund": 10225.0
+      },
+      "top_from": [
+        {
+          "name": "TBS",
+          "val": 2864195.62
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1369890.6
+        },
+        {
+          "name": "K Terengganu",
+          "val": 940270.5
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 816223.4
+        },
+        {
+          "name": "Kuantan",
+          "val": 731782.2
+        }
+      ],
+      "top_to": [
+        {
+          "name": "TBS",
+          "val": 2705856.55
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1359585.9
+        },
+        {
+          "name": "K Terengganu",
+          "val": 897657.7
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 810087.9
+        },
+        {
+          "name": "Kuantan",
+          "val": 758399.7
+        }
+      ],
+      "top_ops": [
+        {
+          "name": "Perdana Ekspres",
+          "val": 2222864.75
+        },
+        {
+          "name": "Ekspress Mutiara",
+          "val": 2105444.7
+        },
+        {
+          "name": "Mayang Sari",
+          "val": 1845794.5
+        },
+        {
+          "name": "Pancaran",
+          "val": 1375795.0
+        },
+        {
+          "name": "Sani United Berhad",
+          "val": 1266470.4
+        }
+      ]
+    },
+    "2025-10": {
+      "year": 2025,
+      "month_num": 10,
+      "sales": {
+        "OTS": 0.0,
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0
+      },
+      "tickets": {
+        "OTS": 0,
+        "BOT": 0,
+        "EASI": 0,
+        "RED": 0
+      },
+      "api_fees": {
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0,
+        "RED_refund": 12684.0
+      },
+      "top_from": [
+        {
+          "name": "TBS",
+          "val": 2778385.2
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1192138.1
+        },
+        {
+          "name": "K Terengganu",
+          "val": 889789.1
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 827153.2
+        },
+        {
+          "name": "Kuantan",
+          "val": 793293.3
+        }
+      ],
+      "top_to": [
+        {
+          "name": "TBS",
+          "val": 2635228.76
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1194084.0
+        },
+        {
+          "name": "K Terengganu",
+          "val": 864223.6
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 840852.7
+        },
+        {
+          "name": "Kuantan",
+          "val": 768723.0
+        }
+      ],
+      "top_ops": [
+        {
+          "name": "Perdana Ekspres",
+          "val": 2178336.15
+        },
+        {
+          "name": "Ekspress Mutiara",
+          "val": 2157431.0
+        },
+        {
+          "name": "Mayang Sari",
+          "val": 1972202.2
+        },
+        {
+          "name": "Sani United Berhad",
+          "val": 1441828.1
+        },
+        {
+          "name": "Pancaran",
+          "val": 1401341.5
+        }
+      ]
+    },
+    "2025-11": {
+      "year": 2025,
+      "month_num": 11,
+      "sales": {
+        "OTS": 0.0,
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0
+      },
+      "tickets": {
+        "OTS": 0,
+        "BOT": 0,
+        "EASI": 0,
+        "RED": 0
+      },
+      "api_fees": {
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0,
+        "RED_refund": 11305.0
+      },
+      "top_from": [
+        {
+          "name": "TBS",
+          "val": 2568296.6
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1132874.0
+        },
+        {
+          "name": "Shah Alam",
+          "val": 793824.2
+        },
+        {
+          "name": "K Terengganu",
+          "val": 768950.6
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 765635.4
+        }
+      ],
+      "top_to": [
+        {
+          "name": "TBS",
+          "val": 2305746.85
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1296037.7
+        },
+        {
+          "name": "K Terengganu",
+          "val": 823535.5
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 746743.6
+        },
+        {
+          "name": "Shah Alam",
+          "val": 729677.65
+        }
+      ],
+      "top_ops": [
+        {
+          "name": "Perdana Ekspres",
+          "val": 2185009.57
+        },
+        {
+          "name": "Ekspress Mutiara",
+          "val": 2170030.8
+        },
+        {
+          "name": "Mayang Sari",
+          "val": 1812168.2
+        },
+        {
+          "name": "Sani United Berhad",
+          "val": 1413363.5
+        },
+        {
+          "name": "Pancaran",
+          "val": 1219565.0
+        }
+      ]
+    },
+    "2025-12": {
+      "year": 2025,
+      "month_num": 12,
+      "sales": {
+        "OTS": 0.0,
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0
+      },
+      "tickets": {
+        "OTS": 0,
+        "BOT": 0,
+        "EASI": 0,
+        "RED": 0
+      },
+      "api_fees": {
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0,
+        "RED_refund": 11368.0
+      },
+      "top_from": [
+        {
+          "name": "TBS",
+          "val": 3337514.0
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1437244.5
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 1095287.6
+        },
+        {
+          "name": "Shah Alam",
+          "val": 1018695.25
+        },
+        {
+          "name": "K Terengganu",
+          "val": 906057.7
+        }
+      ],
+      "top_to": [
+        {
+          "name": "TBS",
+          "val": 2902552.1
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1613090.5
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 1084719.7
+        },
+        {
+          "name": "Shah Alam",
+          "val": 964170.65
+        },
+        {
+          "name": "K Terengganu",
+          "val": 950153.8
+        }
+      ],
+      "top_ops": [
+        {
+          "name": "Ekspress Mutiara",
+          "val": 2825047.9
+        },
+        {
+          "name": "Perdana Ekspres",
+          "val": 2635064.74
+        },
+        {
+          "name": "Mayang Sari",
+          "val": 2190524.6
+        },
+        {
+          "name": "Pancaran",
+          "val": 1612005.0
+        },
+        {
+          "name": "Sani United Berhad",
+          "val": 1593500.0
+        }
+      ]
+    },
+    "2026-01": {
+      "year": 2026,
+      "month_num": 1,
+      "sales": {
+        "OTS": 0.0,
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0
+      },
+      "tickets": {
+        "OTS": 0,
+        "BOT": 0,
+        "EASI": 0,
+        "RED": 0
+      },
+      "api_fees": {
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0,
+        "RED_refund": 7441.0
+      },
+      "top_from": [
+        {
+          "name": "TBS",
+          "val": 2838871.57
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1327005.3
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 949940.6
+        },
+        {
+          "name": "K Terengganu",
+          "val": 835464.9
+        },
+        {
+          "name": "Shah Alam",
+          "val": 767172.85
+        }
+      ],
+      "top_to": [
+        {
+          "name": "TBS",
+          "val": 2446874.3
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1530849.7
+        },
+        {
+          "name": "K Terengganu",
+          "val": 914957.6
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 908055.8
+        },
+        {
+          "name": "Kuantan",
+          "val": 714147.9
+        }
+      ],
+      "top_ops": [
+        {
+          "name": "Perdana Ekspres",
+          "val": 2627666.81
+        },
+        {
+          "name": "Ekspress Mutiara",
+          "val": 2623121.9
+        },
+        {
+          "name": "Mayang Sari",
+          "val": 1914933.0
+        },
+        {
+          "name": "Sani United Berhad",
+          "val": 1476298.9
+        },
+        {
+          "name": "Pancaran",
+          "val": 1271385.0
+        }
+      ]
+    },
+    "2026-02": {
+      "year": 2026,
+      "month_num": 2,
+      "sales": {
+        "OTS": 0.0,
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0
+      },
+      "tickets": {
+        "OTS": 0,
+        "BOT": 0,
+        "EASI": 0,
+        "RED": 0
+      },
+      "api_fees": {
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0,
+        "RED_refund": 11186.0
+      },
+      "top_from": [
+        {
+          "name": "TBS",
+          "val": 3222647.67
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1549967.2
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 1079213.0
+        },
+        {
+          "name": "K Terengganu",
+          "val": 943263.2
+        },
+        {
+          "name": "Shah Alam",
+          "val": 903830.3
+        }
+      ],
+      "top_to": [
+        {
+          "name": "TBS",
+          "val": 2877234.05
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1793201.93
+        },
+        {
+          "name": "K Terengganu",
+          "val": 1098734.5
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 994443.3
+        },
+        {
+          "name": "Kuantan",
+          "val": 814328.84
+        }
+      ],
+      "top_ops": [
+        {
+          "name": "Ekspress Mutiara",
+          "val": 2845644.8
+        },
+        {
+          "name": "Perdana Ekspres",
+          "val": 2712181.47
+        },
+        {
+          "name": "Mayang Sari",
+          "val": 1862486.2
+        },
+        {
+          "name": "Sani United Berhad",
+          "val": 1482481.6
+        },
+        {
+          "name": "Pancaran",
+          "val": 1422390.0
+        }
+      ]
+    },
+    "2026-03": {
+      "year": 2026,
+      "month_num": 3,
+      "sales": {
+        "OTS": 0.0,
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0
+      },
+      "tickets": {
+        "OTS": 0,
+        "BOT": 0,
+        "EASI": 0,
+        "RED": 0
+      },
+      "api_fees": {
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0,
+        "RED_refund": 14155.0
+      },
+      "top_from": [
+        {
+          "name": "TBS",
+          "val": 2644023.3
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1582420.4
+        },
+        {
+          "name": "K Terengganu",
+          "val": 905566.5
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 863535.6
+        },
+        {
+          "name": "Kuantan",
+          "val": 696596.5
+        }
+      ],
+      "top_to": [
+        {
+          "name": "TBS",
+          "val": 2863201.3
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1312221.39
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 936257.7
+        },
+        {
+          "name": "Shah Alam",
+          "val": 820568.0
+        },
+        {
+          "name": "K Terengganu",
+          "val": 780884.2
+        }
+      ],
+      "top_ops": [
+        {
+          "name": "Perdana Ekspres",
+          "val": 2440632.26
+        },
+        {
+          "name": "Ekspress Mutiara",
+          "val": 2247823.6
+        },
+        {
+          "name": "Mayang Sari",
+          "val": 1768161.6
+        },
+        {
+          "name": "Pancaran",
+          "val": 1195770.0
+        },
+        {
+          "name": "Sani United Berhad",
+          "val": 1153910.3
+        }
+      ]
+    },
+    "2026-04": {
+      "year": 2026,
+      "month_num": 4,
+      "sales": {
+        "OTS": 0.0,
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0
+      },
+      "tickets": {
+        "OTS": 0,
+        "BOT": 0,
+        "EASI": 0,
+        "RED": 0
+      },
+      "api_fees": {
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0,
+        "RED_refund": 1063.0
+      },
+      "top_from": [
+        {
+          "name": "Terminal Bersepadu Selatan",
+          "val": 2746540.2
+        },
+        {
+          "name": "Kota Bharu (Lembah Sireh)",
+          "val": 1180974.9
+        },
+        {
+          "name": "Kuala Terengganu",
+          "val": 845259.6
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 833036.6
+        },
+        {
+          "name": "Shah Alam",
+          "val": 769291.2
+        }
+      ],
+      "top_to": [
+        {
+          "name": "Terminal Bersepadu Selatan",
+          "val": 2402995.2
+        },
+        {
+          "name": "Kota Bharu (Lembah Sireh)",
+          "val": 1473239.53
+        },
+        {
+          "name": "Kuala Terengganu",
+          "val": 922518.5
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 799570.9
+        },
+        {
+          "name": "Shah Alam",
+          "val": 748471.6
+        }
+      ],
+      "top_ops": [
+        {
+          "name": "Ekspress Mutiara",
+          "val": 2588548.9
+        },
+        {
+          "name": "Perdana Ekspres",
+          "val": 2397716.92
+        },
+        {
+          "name": "Mayang Sari",
+          "val": 1698610.8
+        },
+        {
+          "name": "Sani United Berhad",
+          "val": 1612383.3
+        },
+        {
+          "name": "Pancaran",
+          "val": 1220579.0
+        }
+      ]
+    },
+    "2026-05": {
+      "year": 2026,
+      "month_num": 5,
+      "sales": {
+        "OTS": 0.0,
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0
+      },
+      "tickets": {
+        "OTS": 0,
+        "BOT": 0,
+        "EASI": 0,
+        "RED": 0
+      },
+      "api_fees": {
+        "BOT": 0.0,
+        "EASI": 0.0,
+        "RED": 0.0,
+        "RED_refund": 0.0
+      },
+      "top_from": [
+        {
+          "name": "TBS",
+          "val": 3798514.3
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1883303.6
+        },
+        {
+          "name": "K Terengganu",
+          "val": 1131424.2
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 1110276.3
+        },
+        {
+          "name": "Shah Alam",
+          "val": 1101163.25
+        }
+      ],
+      "top_to": [
+        {
+          "name": "TBS",
+          "val": 3550153.55
+        },
+        {
+          "name": "Kota Bharu",
+          "val": 1940488.7
+        },
+        {
+          "name": "K Terengganu",
+          "val": 1166886.5
+        },
+        {
+          "name": "Johor Bharu",
+          "val": 1157643.6
+        },
+        {
+          "name": "Shah Alam",
+          "val": 1057317.8
+        }
+      ],
+      "top_ops": [
+        {
+          "name": "Perdana Ekspres",
+          "val": 3231516.68
+        },
+        {
+          "name": "Ekspress Mutiara",
+          "val": 2848137.3
+        },
+        {
+          "name": "Mayang Sari",
+          "val": 2305347.3
+        },
+        {
+          "name": "Sani United Berhad",
+          "val": 1927920.7
+        },
+        {
+          "name": "Pancaran",
+          "val": 1829366.0
+        }
+      ]
+    }
+  }
+}
