@@ -89,15 +89,14 @@ select:hover,select:focus{border-color:var(--acc);}
 .chart-title{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;}
 .chart-wrap{position:relative;}
 
-/* Top lists */
 .top-list{list-style:none;margin-top:4px;}
-.top-list li{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(31,45,69,.6);font-size:13px;}
+.top-list li{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(31,45,69,.6);font-size:13px;}
 .top-list li:last-child{border-bottom:none;}
 .top-rank{font-family:var(--mono);font-size:10px;color:var(--muted2);width:18px;flex-shrink:0;}
-.top-name{flex:1;color:var(--text);}
-.top-bar-wrap{width:80px;height:4px;background:var(--s3);border-radius:2px;flex-shrink:0;}
+.top-name{flex:1;color:var(--text);font-size:12px;word-break:break-word;}
+.top-bar-wrap{width:50px;height:4px;background:var(--s3);border-radius:2px;flex-shrink:0;}
 .top-bar{height:4px;border-radius:2px;background:var(--acc);transition:width .6s ease;}
-.top-val{font-family:var(--mono);font-size:11px;color:var(--muted);width:72px;text-align:right;flex-shrink:0;}
+.top-val{font-family:var(--mono);font-size:11px;color:var(--muted);width:68px;text-align:right;flex-shrink:0;}
 
 /* Footer */
 footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:center;padding-top:20px;border-top:1px solid var(--b);letter-spacing:.08em;margin-top:8px;}
@@ -256,44 +255,80 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
   </div>
 </div>
 
-<!-- Market share + Top lists -->
-<div class="sec-label">Analisis Pasaran &amp; Lokasi</div>
-<div class="charts-bottom">
+<!-- Market Share — full width -->
+<div class="sec-label">Analisis Pasaran</div>
+<div style="display:grid;grid-template-columns:340px 1fr;gap:14px;margin-bottom:14px;">
   <div class="chart-card">
     <div class="chart-title">Market Share — Nilai Jualan (%)</div>
-    <div class="chart-wrap"><canvas id="ch-share" height="200"></canvas></div>
-    <div id="share-breakdown" style="margin-top:14px;display:flex;flex-direction:column;gap:6px;"></div>
+    <div class="chart-wrap"><canvas id="ch-share" height="220"></canvas></div>
+    <div id="share-breakdown" style="margin-top:14px;"></div>
   </div>
-  <div class="chart-card" style="grid-column:span 2;">
-    <div class="chart-title">Top 5 Lokasi 'From' — Mengikut Saluran</div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px;">
-      <div><div style="font-family:var(--mono);font-size:9px;color:var(--ots);letter-spacing:.1em;margin-bottom:8px;">OTS</div><ul class="top-list" id="top-from-ots"></ul></div>
-      <div><div style="font-family:var(--mono);font-size:9px;color:var(--bot);letter-spacing:.1em;margin-bottom:8px;">BOT</div><ul class="top-list" id="top-from-bot"></ul></div>
-      <div><div style="font-family:var(--mono);font-size:9px;color:var(--easi);letter-spacing:.1em;margin-bottom:8px;">EASI</div><ul class="top-list" id="top-from-easi"></ul></div>
-      <div><div style="font-family:var(--mono);font-size:9px;color:var(--red);letter-spacing:.1em;margin-bottom:8px;">RED</div><ul class="top-list" id="top-from-red"></ul></div>
-    </div>
+  <div class="chart-card" style="display:flex;flex-direction:column;justify-content:center;">
+    <div class="chart-title" style="margin-bottom:16px;">Ringkasan Market Share</div>
+    <div id="share-summary" style="display:flex;flex-direction:column;gap:12px;"></div>
   </div>
 </div>
 
-<div class="sec-label">Top 5 Lokasi 'To' &amp; Operator</div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+<!-- Top 5 From -->
+<div class="sec-label">Top 5 Lokasi 'From'</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;">
   <div class="chart-card">
-    <div class="chart-title">Top 5 Lokasi 'To' — Mengikut Saluran</div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px;">
-      <div><div style="font-family:var(--mono);font-size:9px;color:var(--ots);letter-spacing:.1em;margin-bottom:8px;">OTS</div><ul class="top-list" id="top-to-ots"></ul></div>
-      <div><div style="font-family:var(--mono);font-size:9px;color:var(--bot);letter-spacing:.1em;margin-bottom:8px;">BOT</div><ul class="top-list" id="top-to-bot"></ul></div>
-      <div><div style="font-family:var(--mono);font-size:9px;color:var(--easi);letter-spacing:.1em;margin-bottom:8px;">EASI</div><ul class="top-list" id="top-to-easi"></ul></div>
-      <div><div style="font-family:var(--mono);font-size:9px;color:var(--red);letter-spacing:.1em;margin-bottom:8px;">RED</div><ul class="top-list" id="top-to-red"></ul></div>
-    </div>
+    <div class="chart-title" style="color:var(--ots);">OTS</div>
+    <ul class="top-list" id="top-from-ots"></ul>
   </div>
   <div class="chart-card">
-    <div class="chart-title">Top 5 Operator Bas — Mengikut Saluran</div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px;">
-      <div><div style="font-family:var(--mono);font-size:9px;color:var(--ots);letter-spacing:.1em;margin-bottom:8px;">OTS</div><ul class="top-list" id="top-ops-ots"></ul></div>
-      <div><div style="font-family:var(--mono);font-size:9px;color:var(--bot);letter-spacing:.1em;margin-bottom:8px;">BOT</div><ul class="top-list" id="top-ops-bot"></ul></div>
-      <div><div style="font-family:var(--mono);font-size:9px;color:var(--easi);letter-spacing:.1em;margin-bottom:8px;">EASI</div><ul class="top-list" id="top-ops-easi"></ul></div>
-      <div><div style="font-family:var(--mono);font-size:9px;color:var(--red);letter-spacing:.1em;margin-bottom:8px;">RED</div><ul class="top-list" id="top-ops-red"></ul></div>
-    </div>
+    <div class="chart-title" style="color:var(--bot);">BOT</div>
+    <ul class="top-list" id="top-from-bot"></ul>
+  </div>
+  <div class="chart-card">
+    <div class="chart-title" style="color:var(--easi);">EASI</div>
+    <ul class="top-list" id="top-from-easi"></ul>
+  </div>
+  <div class="chart-card">
+    <div class="chart-title" style="color:var(--red);">RED</div>
+    <ul class="top-list" id="top-from-red"></ul>
+  </div>
+</div>
+
+<!-- Top 5 To -->
+<div class="sec-label">Top 5 Lokasi 'To'</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;">
+  <div class="chart-card">
+    <div class="chart-title" style="color:var(--ots);">OTS</div>
+    <ul class="top-list" id="top-to-ots"></ul>
+  </div>
+  <div class="chart-card">
+    <div class="chart-title" style="color:var(--bot);">BOT</div>
+    <ul class="top-list" id="top-to-bot"></ul>
+  </div>
+  <div class="chart-card">
+    <div class="chart-title" style="color:var(--easi);">EASI</div>
+    <ul class="top-list" id="top-to-easi"></ul>
+  </div>
+  <div class="chart-card">
+    <div class="chart-title" style="color:var(--red);">RED</div>
+    <ul class="top-list" id="top-to-red"></ul>
+  </div>
+</div>
+
+<!-- Top 5 Operator -->
+<div class="sec-label">Top 5 Operator Bas</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;">
+  <div class="chart-card">
+    <div class="chart-title" style="color:var(--ots);">OTS</div>
+    <ul class="top-list" id="top-ops-ots"></ul>
+  </div>
+  <div class="chart-card">
+    <div class="chart-title" style="color:var(--bot);">BOT</div>
+    <ul class="top-list" id="top-ops-bot"></ul>
+  </div>
+  <div class="chart-card">
+    <div class="chart-title" style="color:var(--easi);">EASI</div>
+    <ul class="top-list" id="top-ops-easi"></ul>
+  </div>
+  <div class="chart-card">
+    <div class="chart-title" style="color:var(--red);">RED</div>
+    <ul class="top-list" id="top-ops-red"></ul>
   </div>
 </div>
 
@@ -561,7 +596,21 @@ function render(){
     }]
   });
 
-  // Breakdown table market share
+  // Share summary card
+  const chLabels = ['OTS','BOT','EASI','RED'];
+  document.getElementById('share-summary').innerHTML = chLabels.map((lbl,i) => `
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="width:3px;height:36px;border-radius:2px;background:${shareColors[i]};flex-shrink:0;"></div>
+      <div style="flex:1;">
+        <div style="font-family:var(--mono);font-size:10px;color:${shareColors[i]};letter-spacing:.1em;">${lbl}</div>
+        <div style="font-size:16px;font-weight:600;margin:2px 0;">${fmt(shareSales[i])}</div>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--muted);">${fmtN(shareTix[i])} tiket · ${(shareSales[i]/shareTotal*100).toFixed(1)}%</div>
+      </div>
+      <div style="font-family:var(--mono);font-size:22px;font-weight:600;color:${shareColors[i]};">${(shareSales[i]/shareTotal*100).toFixed(1)}%</div>
+    </div>
+  `).join('<div style="height:1px;background:var(--b);margin:2px 0;"></div>');
+
+
   document.getElementById('share-breakdown').innerHTML = `
     <div style="display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:4px 10px;font-family:var(--mono);font-size:10px;">
       <div></div>
