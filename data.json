@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-18T17:27:59.778511",
+  "generated": "2026-06-19T11:51:40.189092",
   "months": {
     "2025-01": {
       "year": 2025,
@@ -17,9 +17,9 @@
         "RED": 344791
       },
       "api_fees": {
-        "BOT": 0.0,
-        "EASI": 0.0,
-        "RED": 0.0,
+        "BOT": 27496.64,
+        "EASI": 34624.64,
+        "RED": 260852.77,
         "RED_refund": 11701.0
       },
       "top_from": [
@@ -316,9 +316,9 @@
         "RED": 282550
       },
       "api_fees": {
-        "BOT": 0.0,
-        "EASI": 0.0,
-        "RED": 0.0,
+        "BOT": 25832.77,
+        "EASI": 28281.96,
+        "RED": 213228.67,
         "RED_refund": 7887.0
       },
       "top_from": [
@@ -678,9 +678,9 @@
         "RED": 254611
       },
       "api_fees": {
-        "BOT": 0.0,
-        "EASI": 0.0,
-        "RED": 0.0,
+        "BOT": 28459.51,
+        "EASI": 35078.16,
+        "RED": 173984.37,
         "RED_refund": 10444.0
       },
       "top_from": [
@@ -1040,9 +1040,9 @@
         "RED": 274554
       },
       "api_fees": {
-        "BOT": 0.0,
-        "EASI": 0.0,
-        "RED": 0.0,
+        "BOT": 24680.25,
+        "EASI": 25965.6,
+        "RED": 198479.83,
         "RED_refund": 9137.0
       },
       "top_from": [
@@ -1127,7 +1127,7 @@
               "val": 49254.6
             },
             {
-              "name": "Tmnl Brspd Gombak",
+              "name": "TBG",
               "val": 45137.2
             },
             {
@@ -1402,9 +1402,9 @@
         "RED": 358532
       },
       "api_fees": {
-        "BOT": 0.0,
-        "EASI": 0.0,
-        "RED": 0.0,
+        "BOT": 29569.77,
+        "EASI": 34666.94,
+        "RED": 274130.08,
         "RED_refund": 10263.0
       },
       "top_from": [
@@ -1489,7 +1489,7 @@
               "val": 89623.9
             },
             {
-              "name": "Tmnl Brspd Gombak",
+              "name": "TBG",
               "val": 81699.3
             },
             {
@@ -1511,7 +1511,7 @@
               "val": 75577.35
             },
             {
-              "name": "Tmnl Brspd Gombak",
+              "name": "TBG",
               "val": 73494.2
             },
             {
@@ -1764,9 +1764,9 @@
         "RED": 258398
       },
       "api_fees": {
-        "BOT": 0.0,
-        "EASI": 0.0,
-        "RED": 0.0,
+        "BOT": 25457.9,
+        "EASI": 26053.07,
+        "RED": 190375.98,
         "RED_refund": 8474.0
       },
       "top_from": [
@@ -1851,7 +1851,7 @@
               "val": 49376.35
             },
             {
-              "name": "Tmnl Brspd Gombak",
+              "name": "TBG",
               "val": 47480.3
             },
             {
@@ -1873,7 +1873,7 @@
               "val": 52817.6
             },
             {
-              "name": "Tmnl Brspd Gombak",
+              "name": "TBG",
               "val": 52723.6
             },
             {
@@ -2126,9 +2126,9 @@
         "RED": 292842
       },
       "api_fees": {
-        "BOT": 0.0,
-        "EASI": 0.0,
-        "RED": 0.0,
+        "BOT": 24030.55,
+        "EASI": 28400.41,
+        "RED": 210906.57,
         "RED_refund": 6552.0
       },
       "top_from": [
@@ -2488,9 +2488,9 @@
         "RED": 313941
       },
       "api_fees": {
-        "BOT": 0.0,
-        "EASI": 0.0,
-        "RED": 0.0,
+        "BOT": 25247.09,
+        "EASI": 33515.93,
+        "RED": 223514.71,
         "RED_refund": 7878.0
       },
       "top_from": [
@@ -2850,9 +2850,9 @@
         "RED": 340014
       },
       "api_fees": {
-        "BOT": 0.0,
-        "EASI": 0.0,
-        "RED": 0.0,
+        "BOT": 28140.3,
+        "EASI": 33257.35,
+        "RED": 248595.46,
         "RED_refund": 10225.0
       },
       "top_from": [
@@ -3212,9 +3212,9 @@
         "RED": 353109
       },
       "api_fees": {
-        "BOT": 0.0,
-        "EASI": 0.0,
-        "RED": 0.0,
+        "BOT": 26406.76,
+        "EASI": 32990.81,
+        "RED": 244674.89,
         "RED_refund": 12684.0
       },
       "top_from": [
@@ -3574,9 +3574,9 @@
         "RED": 341525
       },
       "api_fees": {
-        "BOT": 0.0,
-        "EASI": 0.0,
-        "RED": 0.0,
+        "BOT": 24520.76,
+        "EASI": 30632.99,
+        "RED": 240066.78,
         "RED_refund": 11305.0
       },
       "top_from": [
@@ -3936,9 +3936,9 @@
         "RED": 401332
       },
       "api_fees": {
-        "BOT": 0.0,
-        "EASI": 0.0,
-        "RED": 0.0,
+        "BOT": 33635.1,
+        "EASI": 39972.0,
+        "RED": 297461.34,
         "RED_refund": 11368.0
       },
       "top_from": [
@@ -4298,9 +4298,9 @@
         "RED": 351089
       },
       "api_fees": {
-        "BOT": 0.0,
-        "EASI": 0.0,
-        "RED": 0.0,
+        "BOT": 31776.3,
+        "EASI": 37498.59,
+        "RED": 263784.6,
         "RED_refund": 7441.0
       },
       "top_from": [
@@ -4660,9 +4660,9 @@
         "RED": 344840
       },
       "api_fees": {
-        "BOT": 0.0,
-        "EASI": 0.0,
-        "RED": 0.0,
+        "BOT": 33545.43,
+        "EASI": 44697.45,
+        "RED": 279742.63,
         "RED_refund": 11186.0
       },
       "top_from": [
@@ -5022,15 +5022,15 @@
         "RED": 295883
       },
       "api_fees": {
-        "BOT": 0.0,
-        "EASI": 0.0,
-        "RED": 0.0,
+        "BOT": 30316.55,
+        "EASI": 42736.0802,
+        "RED": 248267.5091,
         "RED_refund": 14155.0
       },
       "top_from": [
         {
           "name": "TBS",
-          "val": 2644023.3
+          "val": 2754149.45
         },
         {
           "name": "Kota Bharu",
@@ -5038,7 +5038,7 @@
         },
         {
           "name": "K Terengganu",
-          "val": 905566.5
+          "val": 935965.9
         },
         {
           "name": "Johor Bharu",
@@ -5052,7 +5052,7 @@
       "top_to": [
         {
           "name": "TBS",
-          "val": 2863201.3
+          "val": 2989091.85
         },
         {
           "name": "Kota Bharu",
@@ -5068,7 +5068,7 @@
         },
         {
           "name": "K Terengganu",
-          "val": 780884.2
+          "val": 809261.2
         }
       ],
       "top_ops": [
@@ -5097,7 +5097,7 @@
         "OTS": {
           "from": [
             {
-              "name": "Tmnl Brspdu Selatan",
+              "name": "TBS",
               "val": 110126.15000000001
             },
             {
@@ -5105,11 +5105,11 @@
               "val": 93834.4
             },
             {
-              "name": "Tmnl Brspd Gombak",
+              "name": "TBG",
               "val": 39922.9
             },
             {
-              "name": "Kuala Terengganu",
+              "name": "K Terengganu",
               "val": 30399.4
             },
             {
@@ -5119,7 +5119,7 @@
           ],
           "to": [
             {
-              "name": "Tmnl Brspdu Selatan",
+              "name": "TBS",
               "val": 125890.55
             },
             {
@@ -5127,7 +5127,7 @@
               "val": 81180.6
             },
             {
-              "name": "Tmnl Brspd Gombak",
+              "name": "TBG",
               "val": 58630.4
             },
             {
@@ -5384,15 +5384,15 @@
         "RED": 334180
       },
       "api_fees": {
-        "BOT": 0.0,
-        "EASI": 0.0,
-        "RED": 0.0,
+        "BOT": 28218.08,
+        "EASI": 39882.5,
+        "RED": 263367.41,
         "RED_refund": 1063.0
       },
       "top_from": [
         {
           "name": "Terminal Bersepadu Selatan",
-          "val": 2746540.2
+          "val": 2481758.1
         },
         {
           "name": "Kota Bharu (Lembah Sireh)",
@@ -5414,7 +5414,7 @@
       "top_to": [
         {
           "name": "Terminal Bersepadu Selatan",
-          "val": 2402995.2
+          "val": 2189393.1
         },
         {
           "name": "Kota Bharu (Lembah Sireh)",
@@ -5527,8 +5527,8 @@
         "BOT": {
           "from": [
             {
-              "name": "Terminal Bersepadu Selatan",
-              "val": 264782.1
+              "name": "TBS",
+              "val": 278400.7
             },
             {
               "name": "Johor Bharu",
@@ -5549,8 +5549,8 @@
           ],
           "to": [
             {
-              "name": "Terminal Bersepadu Selatan",
-              "val": 213602.1
+              "name": "TBS",
+              "val": 228546.2
             },
             {
               "name": "Kota Bharu (Lembah Sireh)",
@@ -5746,9 +5746,9 @@
         "RED": 376744
       },
       "api_fees": {
-        "BOT": 0.0,
-        "EASI": 0.0,
-        "RED": 0.0,
+        "BOT": 36436.9,
+        "EASI": 55728.39431,
+        "RED": 353104.9,
         "RED_refund": 9789.0
       },
       "top_from": [
