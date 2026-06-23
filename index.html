@@ -101,8 +101,13 @@ select:hover,select:focus{border-color:var(--acc);}
 /* Footer */
 footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:center;padding-top:20px;border-top:1px solid var(--b);letter-spacing:.08em;margin-top:8px;}
 
-/* Animate */
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+/* Trend indicator */
+.kpi-trend{display:flex;align-items:center;justify-content:space-between;margin-top:6px;font-size:11px;font-family:var(--mono);}
+.kpi-trend:empty{display:none;}
+.trend-up{color:#34d399;}
+.trend-dn{color:#f87171;}
+.trend-arrow{display:inline-flex;align-items:center;gap:3px;}
+.trend-rm{font-size:11px;}
 .kpi-card,.api-card,.chart-card{animation:fadeUp .4s ease both;}
 </style>
 </head>
@@ -145,6 +150,7 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
       <div class="kpi-main" id="k-ots-sales">—</div>
       <div class="kpi-breakdown">
         <div class="kpi-row-item"><span class="label">% daripada jumlah</span><span class="val" id="k-ots-pct" style="color:var(--ots)">—</span></div>
+        <div class="kpi-trend" id="trend-ots-sales"></div>
       </div>
     </div>
     <div class="kpi-card" style="--kc:var(--bot)">
@@ -152,6 +158,7 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
       <div class="kpi-main" id="k-bot-sales">—</div>
       <div class="kpi-breakdown">
         <div class="kpi-row-item"><span class="label">% daripada jumlah</span><span class="val" id="k-bot-pct" style="color:var(--bot)">—</span></div>
+        <div class="kpi-trend" id="trend-bot-sales"></div>
       </div>
     </div>
     <div class="kpi-card" style="--kc:var(--easi)">
@@ -159,6 +166,7 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
       <div class="kpi-main" id="k-easi-sales">—</div>
       <div class="kpi-breakdown">
         <div class="kpi-row-item"><span class="label">% daripada jumlah</span><span class="val" id="k-easi-pct" style="color:var(--easi)">—</span></div>
+        <div class="kpi-trend" id="trend-easi-sales"></div>
       </div>
     </div>
     <div class="kpi-card" style="--kc:var(--red)">
@@ -166,6 +174,7 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
       <div class="kpi-main" id="k-red-sales">—</div>
       <div class="kpi-breakdown">
         <div class="kpi-row-item"><span class="label">% daripada jumlah</span><span class="val" id="k-red-pct" style="color:var(--red)">—</span></div>
+        <div class="kpi-trend" id="trend-red-sales"></div>
       </div>
     </div>
   </div>
@@ -180,6 +189,7 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
       <div class="kpi-main" id="k-ots-tix">—</div>
       <div class="kpi-breakdown">
         <div class="kpi-row-item"><span class="label">% daripada jumlah</span><span class="val" id="k-ots-tpct" style="color:var(--ots)">—</span></div>
+        <div class="kpi-trend" id="trend-ots-tix"></div>
       </div>
     </div>
     <div class="kpi-card" style="--kc:var(--bot)">
@@ -187,6 +197,7 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
       <div class="kpi-main" id="k-bot-tix">—</div>
       <div class="kpi-breakdown">
         <div class="kpi-row-item"><span class="label">% daripada jumlah</span><span class="val" id="k-bot-tpct" style="color:var(--bot)">—</span></div>
+        <div class="kpi-trend" id="trend-bot-tix"></div>
       </div>
     </div>
     <div class="kpi-card" style="--kc:var(--easi)">
@@ -194,6 +205,7 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
       <div class="kpi-main" id="k-easi-tix">—</div>
       <div class="kpi-breakdown">
         <div class="kpi-row-item"><span class="label">% daripada jumlah</span><span class="val" id="k-easi-tpct" style="color:var(--easi)">—</span></div>
+        <div class="kpi-trend" id="trend-easi-tix"></div>
       </div>
     </div>
     <div class="kpi-card" style="--kc:var(--red)">
@@ -201,6 +213,7 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
       <div class="kpi-main" id="k-red-tix">—</div>
       <div class="kpi-breakdown">
         <div class="kpi-row-item"><span class="label">% daripada jumlah</span><span class="val" id="k-red-tpct" style="color:var(--red)">—</span></div>
+        <div class="kpi-trend" id="trend-red-tix"></div>
       </div>
     </div>
   </div>
@@ -502,6 +515,39 @@ function makeTopList(elId, items, maxVal, barColor){
     </li>`).join('');
 }
 
+// ── Trend indicator ──
+function getPrevKey(year, month){
+  if(month === 0) return null;
+  let pm = month - 1, py = year;
+  if(pm === 0){ pm = 12; py -= 1; }
+  return `${py}-${String(pm).padStart(2,'0')}`;
+}
+
+function renderTrend(elId, current, prev){
+  const el = document.getElementById(elId);
+  if(!el) return;
+  if(prev === null || prev === undefined || prev === 0){
+    el.innerHTML = '';
+    return;
+  }
+  const diff    = current - prev;
+  const diffPct = (diff / prev * 100).toFixed(1);
+  const isUp    = diff >= 0;
+  const cls     = isUp ? 'trend-up' : 'trend-dn';
+  const arrow   = isUp
+    ? '<svg width="9" height="9" viewBox="0 0 10 10"><polygon points="5,1 9,9 1,9" fill="currentColor"/></svg>'
+    : '<svg width="9" height="9" viewBox="0 0 10 10"><polygon points="5,9 9,1 1,1" fill="currentColor"/></svg>';
+  const sign    = isUp ? '+' : '';
+  const fmtDiff = typeof current === 'float' || current % 1 !== 0
+    ? `${sign}RM ${Math.abs(diff).toLocaleString('ms-MY',{minimumFractionDigits:2,maximumFractionDigits:2})}`
+    : `${sign}${Math.abs(diff).toLocaleString('ms-MY')}`;
+
+  el.innerHTML = `
+    <span class="trend-arrow ${cls}">${arrow} ${sign}${diffPct}%</span>
+    <span class="trend-rm ${cls}">${fmtDiff}</span>
+  `;
+}
+
 // ── Main render ──
 function render(){
   const year  = +document.getElementById('sel-year').value;
@@ -535,6 +581,26 @@ function render(){
   document.getElementById('k-bot-tpct').textContent  = pct(d.bTix,d.totalTix);
   document.getElementById('k-easi-tpct').textContent = pct(d.eTix,d.totalTix);
   document.getElementById('k-red-tpct').textContent  = pct(d.rTix,d.totalTix);
+
+  // Trend indicators — hanya tunjuk bila bulan spesifik dipilih
+  const prevKey = (month !== 0) ? getPrevKey(year, month) : null;
+  const prev    = prevKey && DB.months[prevKey] ? DB.months[prevKey] : null;
+
+  if(prev){
+    renderTrend('trend-ots-sales',  d.oSales,  prev.sales.OTS);
+    renderTrend('trend-bot-sales',  d.bSales,  prev.sales.BOT);
+    renderTrend('trend-easi-sales', d.eSales,  prev.sales.EASI);
+    renderTrend('trend-red-sales',  d.rSales,  prev.sales.RED);
+    renderTrend('trend-ots-tix',    d.oTix,    prev.tickets.OTS);
+    renderTrend('trend-bot-tix',    d.bTix,    prev.tickets.BOT);
+    renderTrend('trend-easi-tix',   d.eTix,    prev.tickets.EASI);
+    renderTrend('trend-red-tix',    d.rTix,    prev.tickets.RED);
+  } else {
+    ['ots','bot','easi','red'].forEach(ch => {
+      document.getElementById(`trend-${ch}-sales`).innerHTML = '';
+      document.getElementById(`trend-${ch}-tix`).innerHTML   = '';
+    });
+  }
 
   // API Fees
   document.getElementById('api-bot').textContent        = fmt(d.botFee);
