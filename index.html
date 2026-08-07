@@ -82,7 +82,6 @@ select:hover,select:focus{border-color:var(--acc);}
 .api-item.total .api-item-val{font-size:22px;color:var(--acc3);}
 
 /* Charts grid */
-.charts-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-bottom:20px;}
 .charts-bottom{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;}
 @media(max-width:900px){.charts-bottom{grid-template-columns:1fr;}}
 .chart-card{background:var(--s1);border:1px solid var(--b);border-radius:10px;padding:20px;}
@@ -247,24 +246,16 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
   </div>
 </div>
 
-<!-- 4 channel charts -->
+<!-- Combined channel charts -->
 <div class="sec-label">Prestasi Saluran</div>
-<div class="charts-4">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
   <div class="chart-card">
-    <div class="chart-title">OTS — Jualan &amp; Tiket</div>
-    <div class="chart-wrap"><canvas id="ch-ots" height="180"></canvas></div>
+    <div class="chart-title">Jualan Semua Saluran (RM)</div>
+    <div class="chart-wrap"><canvas id="ch-combined-sales" height="200"></canvas></div>
   </div>
   <div class="chart-card">
-    <div class="chart-title">BOT — Jualan &amp; Tiket</div>
-    <div class="chart-wrap"><canvas id="ch-bot" height="180"></canvas></div>
-  </div>
-  <div class="chart-card">
-    <div class="chart-title">EASI — Jualan &amp; Tiket</div>
-    <div class="chart-wrap"><canvas id="ch-easi" height="180"></canvas></div>
-  </div>
-  <div class="chart-card">
-    <div class="chart-title">RED — Jualan &amp; Tiket</div>
-    <div class="chart-wrap"><canvas id="ch-red" height="180"></canvas></div>
+    <div class="chart-title">Tiket Semua Saluran (Kiraan)</div>
+    <div class="chart-wrap"><canvas id="ch-combined-tix" height="200"></canvas></div>
   </div>
 </div>
 
@@ -350,7 +341,7 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
 
 <script>
 // ── Global data store ──
-let DB = {};  // akan diisi dari data.json
+let DB = {};
 
 // ── Helpers ──
 const fmt  = n => 'RM ' + (+n).toLocaleString('ms-MY', {minimumFractionDigits:2, maximumFractionDigits:2});
@@ -369,7 +360,6 @@ function destroyAll(){
 function getFiltered(year, month){
   const keys = Object.keys(DB.months || {});
 
-  // Kumpul semua bulan yang match filter
   const matched = keys.filter(k => {
     const m = DB.months[k];
     if(m.year !== year) return false;
@@ -379,7 +369,6 @@ function getFiltered(year, month){
 
   if(matched.length === 0) return null;
 
-  // Aggregate semua bulan yang match
   let oSales=0, bSales=0, eSales=0, rSales=0;
   let oTix=0, bTix=0, eTix=0, rTix=0;
   let botFee=0, easiFee=0, redFee=0, redRefund=0;
@@ -405,7 +394,6 @@ function getFiltered(year, month){
     (m.top_to  ||[]).forEach(r=>{ toMap[r.name]   = (toMap[r.name]  ||0) + r.val; });
     (m.top_ops ||[]).forEach(r=>{ opsMap[r.name]  = (opsMap[r.name] ||0) + r.val; });
 
-    // Per saluran
     ['OTS','BOT','EASI','RED'].forEach(ch => {
       const cb = m.top_by_ch?.[ch] || {from:[],to:[],ops:[]};
       if(!byChFrom[ch]) byChFrom[ch]={};
@@ -421,13 +409,11 @@ function getFiltered(year, month){
     .map(([name,val])=>({name,val}))
     .sort((a,b)=>b.val-a.val).slice(0,n);
 
-  // Chart labels — bulan ikut tahun (untuk "Semua Bulan") atau bulan2 dalam tahun tu
   const MONTH_NAMES = ['Jan','Feb','Mac','Apr','Mei','Jun','Jul','Ogo','Sep','Okt','Nov','Dis'];
   let labels=[], oLine=[], bLine=[], eLine=[], rLine=[];
   let oTixLine=[], bTixLine=[], eTixLine=[], rTixLine=[];
 
   if(month === 0){
-    // Semua bulan dalam tahun — tunjuk trend bulanan
     for(let mn=1; mn<=12; mn++){
       const k = `${year}-${String(mn).padStart(2,'0')}`;
       const m = DB.months[k];
@@ -442,7 +428,6 @@ function getFiltered(year, month){
       rTixLine.push(m ? (m.tickets.RED||0)  : 0);
     }
   } else {
-    // Bulan spesifik — tunjuk data bulan sebelumnya untuk context (6 bulan)
     for(let i=5; i>=0; i--){
       let mn = month - i;
       let yr = year;
@@ -482,23 +467,31 @@ function getFiltered(year, month){
 }
 
 // ── Chart helpers ──
-function makeLineBar(id, labels, salesData, tixData, color){
+function makeGroupedBar(id, labels, datasets, yLabel){
   const ctx = document.getElementById(id);
   return new Chart(ctx,{
-    data:{
-      labels,
-      datasets:[
-        {type:'bar', label:'Jualan', data:salesData, backgroundColor:color+'33', borderColor:color, borderWidth:1, borderRadius:3, yAxisID:'y'},
-        {type:'line',label:'Tiket',  data:tixData,   borderColor:color, backgroundColor:'transparent', tension:0.4, pointRadius:3, pointBackgroundColor:color, yAxisID:'y2'}
-      ]
-    },
+    type:'bar',
+    data:{ labels, datasets },
     options:{
-      plugins:{legend:{display:true,labels:{color:tc,font:{family:'JetBrains Mono',size:10},boxWidth:8,padding:10}}},
+      plugins:{
+        legend:{
+          display:true,
+          labels:{color:tc,font:{family:'JetBrains Mono',size:10},boxWidth:8,padding:10}
+        }
+      },
       scales:{
-        x: {grid:{color:gc},ticks:{color:tc,font:{family:'JetBrains Mono',size:9},maxRotation:45}},
-        y: {grid:{color:gc},ticks:{color:tc,font:{family:'JetBrains Mono',size:9}},title:{display:true,text:'RM',color:tc,font:{size:9}}},
-        y2:{position:'right',grid:{display:false},ticks:{color:tc,font:{family:'JetBrains Mono',size:9}},title:{display:true,text:'Tiket',color:tc,font:{size:9}}}
-      }
+        x:{
+          grid:{color:gc},
+          ticks:{color:tc,font:{family:'JetBrains Mono',size:9},maxRotation:45}
+        },
+        y:{
+          grid:{color:gc},
+          ticks:{color:tc,font:{family:'JetBrains Mono',size:9}},
+          title:{display:true,text:yLabel,color:tc,font:{size:9}}
+        }
+      },
+      responsive:true,
+      maintainAspectRatio:true
     }
   });
 }
@@ -582,7 +575,7 @@ function render(){
   document.getElementById('k-easi-tpct').textContent = pct(d.eTix,d.totalTix);
   document.getElementById('k-red-tpct').textContent  = pct(d.rTix,d.totalTix);
 
-  // Trend indicators — hanya tunjuk bila bulan spesifik dipilih
+  // Trend indicators
   const prevKey = (month !== 0) ? getPrevKey(year, month) : null;
   const prev    = prevKey && DB.months[prevKey] ? DB.months[prevKey] : null;
 
@@ -609,12 +602,21 @@ function render(){
   document.getElementById('api-red-refund').textContent = fmt(d.redRefund);
   document.getElementById('api-total').textContent      = fmt(d.botFee+d.easiFee+d.redFee+d.redRefund);
 
-  // Charts
+  // Combined Charts
   destroyAll();
-  charts.ots  = makeLineBar('ch-ots',  d.labels, d.oLine, d.oTixLine, '#3b82f6');
-  charts.bot  = makeLineBar('ch-bot',  d.labels, d.bLine, d.bTixLine, '#10b981');
-  charts.easi = makeLineBar('ch-easi', d.labels, d.eLine, d.eTixLine, '#a78bfa');
-  charts.red  = makeLineBar('ch-red',  d.labels, d.rLine, d.rTixLine, '#f87171');
+  charts.salesCombined = makeGroupedBar('ch-combined-sales', d.labels, [
+    { label:'OTS',  data:d.oLine, backgroundColor:'#3b82f633', borderColor:'#3b82f6', borderWidth:1, borderRadius:3 },
+    { label:'BOT',  data:d.bLine, backgroundColor:'#10b98133', borderColor:'#10b981', borderWidth:1, borderRadius:3 },
+    { label:'EASI', data:d.eLine, backgroundColor:'#a78bfa33', borderColor:'#a78bfa', borderWidth:1, borderRadius:3 },
+    { label:'RED',  data:d.rLine, backgroundColor:'#f8717133', borderColor:'#f87171', borderWidth:1, borderRadius:3 },
+  ], 'RM');
+
+  charts.tixCombined = makeGroupedBar('ch-combined-tix', d.labels, [
+    { label:'OTS',  data:d.oTixLine, backgroundColor:'#3b82f633', borderColor:'#3b82f6', borderWidth:1, borderRadius:3 },
+    { label:'BOT',  data:d.bTixLine, backgroundColor:'#10b98133', borderColor:'#10b981', borderWidth:1, borderRadius:3 },
+    { label:'EASI', data:d.eTixLine, backgroundColor:'#a78bfa33', borderColor:'#a78bfa', borderWidth:1, borderRadius:3 },
+    { label:'RED',  data:d.rTixLine, backgroundColor:'#f8717133', borderColor:'#f87171', borderWidth:1, borderRadius:3 },
+  ], 'Tiket');
 
   // Market share doughnut
   const shareColors = ['#3b82f6','#10b981','#a78bfa','#f87171'];
@@ -676,7 +678,6 @@ function render(){
     </div>
   `).join('<div style="height:1px;background:var(--b);margin:2px 0;"></div>');
 
-
   document.getElementById('share-breakdown').innerHTML = `
     <div style="display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:4px 10px;font-family:var(--mono);font-size:10px;">
       <div></div>
@@ -729,12 +730,10 @@ async function init(){
     if(!res.ok) throw new Error('Gagal fetch data.json');
     DB = await res.json();
 
-    // Auto-populate year filter dari data yang ada
     const years = [...new Set(Object.values(DB.months).map(m=>m.year))].sort((a,b)=>b-a);
     const selYear = document.getElementById('sel-year');
     selYear.innerHTML = years.map(y=>`<option value="${y}">${y}</option>`).join('');
 
-    // Default: tahun terkini, semua bulan
     selYear.value = years[0];
     document.getElementById('sel-month').value = '0';
 
