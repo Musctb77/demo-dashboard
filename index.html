@@ -36,7 +36,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 
 .wrap{max-width:1280px;margin:0 auto;padding:28px 20px;position:relative;z-index:1;}
 
-/* Header */
 header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px;flex-wrap:wrap;gap:12px;}
 .hd-left .eyebrow{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;}
 .hd-left h1{font-size:22px;font-weight:600;letter-spacing:-.02em;}
@@ -45,7 +44,6 @@ header{display:flex;justify-content:space-between;align-items:flex-end;margin-bo
 .live-dot{width:6px;height:6px;background:var(--acc2);border-radius:50%;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
 
-/* Filters */
 .filters{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;align-items:center;}
 .filter-label{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-right:4px;}
 select{background:var(--s2);color:var(--text);border:1px solid var(--b);border-radius:6px;padding:7px 12px;font-family:var(--mono);font-size:12px;cursor:pointer;outline:none;transition:border-color .2s;}
@@ -53,11 +51,9 @@ select:hover,select:focus{border-color:var(--acc);}
 .filter-reset{font-family:var(--mono);font-size:10px;color:var(--muted);background:none;border:1px solid var(--b2);border-radius:4px;padding:6px 12px;cursor:pointer;transition:all .2s;letter-spacing:.06em;}
 .filter-reset:hover{color:var(--text);border-color:var(--muted);}
 
-/* Section label */
 .sec-label{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
 .sec-label::after{content:'';flex:1;height:1px;background:var(--b);}
 
-/* KPI Cards */
 .kpi-group{margin-bottom:20px;}
 .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
 .kpi-card{background:var(--s1);border:1px solid var(--b);border-radius:10px;padding:20px;position:relative;overflow:hidden;transition:border-color .25s,transform .2s;}
@@ -69,9 +65,7 @@ select:hover,select:focus{border-color:var(--acc);}
 .kpi-row-item{display:flex;justify-content:space-between;align-items:center;font-size:12px;}
 .kpi-row-item .label{color:var(--muted);font-family:var(--mono);font-size:11px;}
 .kpi-row-item .val{font-family:var(--mono);font-weight:500;}
-.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;flex-shrink:0;}
 
-/* API Fees card */
 .api-card{background:var(--s1);border:1px solid var(--b);border-radius:10px;padding:20px;position:relative;overflow:hidden;margin-bottom:20px;}
 .api-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--acc3);}
 .api-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:14px;}
@@ -81,12 +75,19 @@ select:hover,select:focus{border-color:var(--acc);}
 .api-item.total{border-color:var(--acc3);background:rgba(245,158,11,.05);}
 .api-item.total .api-item-val{font-size:22px;color:var(--acc3);}
 
-/* Charts grid */
-.charts-bottom{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;}
-@media(max-width:900px){.charts-bottom{grid-template-columns:1fr;}}
 .chart-card{background:var(--s1);border:1px solid var(--b);border-radius:10px;padding:20px;}
 .chart-title{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;}
 .chart-wrap{position:relative;}
+
+/* Festive legend */
+.festive-legend{margin-top:14px;padding-top:12px;border-top:1px solid var(--b);}
+.festive-legend-title{font-family:var(--mono);font-size:9px;color:var(--muted2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
+.festive-grid{display:flex;flex-wrap:wrap;gap:6px 16px;}
+.festive-item{font-family:var(--mono);font-size:10px;color:var(--muted);display:flex;align-items:flex-start;gap:4px;}
+.festive-month{color:var(--muted2);font-weight:500;min-width:28px;}
+.festive-events{display:flex;flex-direction:column;gap:2px;}
+.festive-ph{color:var(--acc3);}
+.festive-school{color:var(--acc2);}
 
 .top-list{list-style:none;margin-top:4px;}
 .top-list li{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(31,45,69,.6);font-size:13px;}
@@ -97,10 +98,8 @@ select:hover,select:focus{border-color:var(--acc);}
 .top-bar{height:4px;border-radius:2px;background:var(--acc);transition:width .6s ease;}
 .top-val{font-family:var(--mono);font-size:11px;color:var(--muted);width:68px;text-align:right;flex-shrink:0;}
 
-/* Footer */
 footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:center;padding-top:20px;border-top:1px solid var(--b);letter-spacing:.08em;margin-top:8px;}
 
-/* Trend indicator */
 .kpi-trend{display:flex;align-items:center;justify-content:space-between;margin-top:6px;font-size:11px;font-family:var(--mono);}
 .kpi-trend:empty{display:none;}
 .trend-up{color:#34d399;}
@@ -121,7 +120,6 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
   <div class="live-badge"><span class="live-dot"></span>Data Sebenar</div>
 </header>
 
-<!-- Filters -->
 <div class="filters">
   <span class="filter-label">Tapis :</span>
   <select id="sel-year" onchange="render()">
@@ -223,26 +221,11 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
 <div class="api-card">
   <div class="kpi-tag">Kos API yang dikutip untuk tempoh dipilih</div>
   <div class="api-grid">
-    <div class="api-item">
-      <div class="api-item-label">BOT API Fee</div>
-      <div class="api-item-val" id="api-bot">—</div>
-    </div>
-    <div class="api-item">
-      <div class="api-item-label">EASI API Fee</div>
-      <div class="api-item-val" id="api-easi">—</div>
-    </div>
-    <div class="api-item">
-      <div class="api-item-label">RED API Fee</div>
-      <div class="api-item-val" id="api-red">—</div>
-    </div>
-    <div class="api-item">
-      <div class="api-item-label">RED Refund</div>
-      <div class="api-item-val" id="api-red-refund" style="color:#f87171">—</div>
-    </div>
-    <div class="api-item total">
-      <div class="api-item-label">Jumlah API Fee</div>
-      <div class="api-item-val" id="api-total">—</div>
-    </div>
+    <div class="api-item"><div class="api-item-label">BOT API Fee</div><div class="api-item-val" id="api-bot">—</div></div>
+    <div class="api-item"><div class="api-item-label">EASI API Fee</div><div class="api-item-val" id="api-easi">—</div></div>
+    <div class="api-item"><div class="api-item-label">RED API Fee</div><div class="api-item-val" id="api-red">—</div></div>
+    <div class="api-item"><div class="api-item-label">RED Refund</div><div class="api-item-val" id="api-red-refund" style="color:#f87171">—</div></div>
+    <div class="api-item total"><div class="api-item-label">Jumlah API Fee</div><div class="api-item-val" id="api-total">—</div></div>
   </div>
 </div>
 
@@ -252,14 +235,22 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
   <div class="chart-card">
     <div class="chart-title">Jualan Semua Saluran (RM)</div>
     <div class="chart-wrap"><canvas id="ch-combined-sales" height="200"></canvas></div>
+    <div class="festive-legend">
+      <div class="festive-legend-title">⭐ Cuti Umum &amp; Sekolah</div>
+      <div class="festive-grid" id="festive-legend-sales"></div>
+    </div>
   </div>
   <div class="chart-card">
     <div class="chart-title">Tiket Semua Saluran (Kiraan)</div>
     <div class="chart-wrap"><canvas id="ch-combined-tix" height="200"></canvas></div>
+    <div class="festive-legend">
+      <div class="festive-legend-title">⭐ Cuti Umum &amp; Sekolah</div>
+      <div class="festive-grid" id="festive-legend-tix"></div>
+    </div>
   </div>
 </div>
 
-<!-- Market Share — full width -->
+<!-- Market Share -->
 <div class="sec-label">Analisis Pasaran</div>
 <div style="display:grid;grid-template-columns:340px 1fr;gap:14px;margin-bottom:14px;">
   <div class="chart-card">
@@ -276,74 +267,186 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
 <!-- Top 5 From -->
 <div class="sec-label">Top 5 Lokasi 'From'</div>
 <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;">
-  <div class="chart-card">
-    <div class="chart-title" style="color:var(--ots);">OTS</div>
-    <ul class="top-list" id="top-from-ots"></ul>
-  </div>
-  <div class="chart-card">
-    <div class="chart-title" style="color:var(--bot);">BOT</div>
-    <ul class="top-list" id="top-from-bot"></ul>
-  </div>
-  <div class="chart-card">
-    <div class="chart-title" style="color:var(--easi);">EASI</div>
-    <ul class="top-list" id="top-from-easi"></ul>
-  </div>
-  <div class="chart-card">
-    <div class="chart-title" style="color:var(--red);">RED</div>
-    <ul class="top-list" id="top-from-red"></ul>
-  </div>
+  <div class="chart-card"><div class="chart-title" style="color:var(--ots);">OTS</div><ul class="top-list" id="top-from-ots"></ul></div>
+  <div class="chart-card"><div class="chart-title" style="color:var(--bot);">BOT</div><ul class="top-list" id="top-from-bot"></ul></div>
+  <div class="chart-card"><div class="chart-title" style="color:var(--easi);">EASI</div><ul class="top-list" id="top-from-easi"></ul></div>
+  <div class="chart-card"><div class="chart-title" style="color:var(--red);">RED</div><ul class="top-list" id="top-from-red"></ul></div>
 </div>
 
 <!-- Top 5 To -->
 <div class="sec-label">Top 5 Lokasi 'To'</div>
 <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px;">
-  <div class="chart-card">
-    <div class="chart-title" style="color:var(--ots);">OTS</div>
-    <ul class="top-list" id="top-to-ots"></ul>
-  </div>
-  <div class="chart-card">
-    <div class="chart-title" style="color:var(--bot);">BOT</div>
-    <ul class="top-list" id="top-to-bot"></ul>
-  </div>
-  <div class="chart-card">
-    <div class="chart-title" style="color:var(--easi);">EASI</div>
-    <ul class="top-list" id="top-to-easi"></ul>
-  </div>
-  <div class="chart-card">
-    <div class="chart-title" style="color:var(--red);">RED</div>
-    <ul class="top-list" id="top-to-red"></ul>
-  </div>
+  <div class="chart-card"><div class="chart-title" style="color:var(--ots);">OTS</div><ul class="top-list" id="top-to-ots"></ul></div>
+  <div class="chart-card"><div class="chart-title" style="color:var(--bot);">BOT</div><ul class="top-list" id="top-to-bot"></ul></div>
+  <div class="chart-card"><div class="chart-title" style="color:var(--easi);">EASI</div><ul class="top-list" id="top-to-easi"></ul></div>
+  <div class="chart-card"><div class="chart-title" style="color:var(--red);">RED</div><ul class="top-list" id="top-to-red"></ul></div>
 </div>
 
 <!-- Top 5 Operator -->
 <div class="sec-label">Top 5 Operator Bas</div>
 <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;">
-  <div class="chart-card">
-    <div class="chart-title" style="color:var(--ots);">OTS</div>
-    <ul class="top-list" id="top-ops-ots"></ul>
-  </div>
-  <div class="chart-card">
-    <div class="chart-title" style="color:var(--bot);">BOT</div>
-    <ul class="top-list" id="top-ops-bot"></ul>
-  </div>
-  <div class="chart-card">
-    <div class="chart-title" style="color:var(--easi);">EASI</div>
-    <ul class="top-list" id="top-ops-easi"></ul>
-  </div>
-  <div class="chart-card">
-    <div class="chart-title" style="color:var(--red);">RED</div>
-    <ul class="top-list" id="top-ops-red"></ul>
-  </div>
+  <div class="chart-card"><div class="chart-title" style="color:var(--ots);">OTS</div><ul class="top-list" id="top-ops-ots"></ul></div>
+  <div class="chart-card"><div class="chart-title" style="color:var(--bot);">BOT</div><ul class="top-list" id="top-ops-bot"></ul></div>
+  <div class="chart-card"><div class="chart-title" style="color:var(--easi);">EASI</div><ul class="top-list" id="top-ops-easi"></ul></div>
+  <div class="chart-card"><div class="chart-title" style="color:var(--red);">RED</div><ul class="top-list" id="top-ops-red"></ul></div>
 </div>
 
 <footer>OTS v OTA DASHBOARD · SEMUA VISUAL BERUBAH MENGIKUT FILTER</footer>
 </div>
 
 <script>
-// ── Global data store ──
-let DB = {};
+// ── Public Holidays & Cuti Sekolah Semenanjung Malaysia ──
+// Format: { year: { monthNum: [ {name, dates, type:'ph'|'school'} ] } }
+const FESTIVE = {
+  2025: {
+    1:  [
+          {name:'Tahun Baru', dates:'1 Jan', type:'ph'},
+          {name:'Thaipusam', dates:'11 Jan', type:'ph'}
+        ],
+    2:  [
+          {name:'Tahun Baru Cina', dates:'29–30 Jan', type:'ph'},
+          {name:'Cuti Sekolah Penggal 1 (Mid)', dates:'15–23 Feb', type:'school'}
+        ],
+    3:  [
+          {name:'Hari Raya Aidilfitri', dates:'31 Mac–1 Apr', type:'ph'}
+        ],
+    4:  [
+          {name:'Hari Raya Aidilfitri', dates:'31 Mac–1 Apr', type:'ph'},
+          {name:'Cuti Sekolah Penggal 1', dates:'12–20 Apr', type:'school'}
+        ],
+    5:  [
+          {name:'Hari Pekerja', dates:'1 Mei', type:'ph'},
+          {name:'Hari Wesak', dates:'12 Mei', type:'ph'}
+        ],
+    6:  [
+          {name:'Hari Keputeraan YDP Agong', dates:'2 Jun', type:'ph'},
+          {name:'Cuti Sekolah Penggal 2 (Mid)', dates:'31 Mei–8 Jun', type:'school'}
+        ],
+    7:  [
+          {name:'Hari Raya Aidiladha', dates:'7 Jul', type:'ph'},
+          {name:'Awal Muharram', dates:'27 Jul', type:'ph'}
+        ],
+    8:  [
+          {name:'Hari Kebangsaan', dates:'31 Ogos', type:'ph'},
+          {name:'Cuti Sekolah Penggal 2', dates:'23 Ogos–31 Ogos', type:'school'}
+        ],
+    9:  [
+          {name:'Hari Malaysia', dates:'16 Sep', type:'ph'},
+          {name:'Cuti Sekolah Penggal 2', dates:'1–7 Sep', type:'school'}
+        ],
+    10: [
+          {name:'Maulidur Rasul', dates:'5 Sep (ganti)', type:'ph'},
+          {name:'Deepavali', dates:'20 Okt', type:'ph'}
+        ],
+    11: [
+          {name:'Cuti Sekolah Penggal 3 (Mid)', dates:'1–9 Nov', type:'school'}
+        ],
+    12: [
+          {name:'Krismas', dates:'25 Dis', type:'ph'},
+          {name:'Cuti Sekolah Akhir Tahun', dates:'20 Nov–31 Dis', type:'school'}
+        ]
+  },
+  2026: {
+    1:  [
+          {name:'Tahun Baru', dates:'1 Jan', type:'ph'},
+          {name:'Thaipusam', dates:'31 Jan', type:'ph'},
+          {name:'Cuti Sekolah Akhir Tahun (sam.)', dates:'1–4 Jan', type:'school'}
+        ],
+    2:  [
+          {name:'Tahun Baru Cina', dates:'17–18 Feb', type:'ph'},
+          {name:'Cuti Sekolah Penggal 1 (Mid)', dates:'14–22 Feb', type:'school'}
+        ],
+    3:  [
+          {name:'Hari Raya Aidilfitri', dates:'20–21 Mac', type:'ph'},
+          {name:'Cuti Sekolah Penggal 1', dates:'28 Mac–5 Apr', type:'school'}
+        ],
+    4:  [
+          {name:'Hari Raya Aidilfitri', dates:'20–21 Mac', type:'ph'},
+          {name:'Cuti Sekolah Penggal 1', dates:'28 Mac–5 Apr', type:'school'}
+        ],
+    5:  [
+          {name:'Hari Pekerja', dates:'1 Mei', type:'ph'},
+          {name:'Hari Wesak', dates:'1 Mei', type:'ph'}
+        ],
+    6:  [
+          {name:'Hari Keputeraan YDP Agong', dates:'1 Jun', type:'ph'},
+          {name:'Cuti Sekolah Penggal 2 (Mid)', dates:'30 Mei–7 Jun', type:'school'}
+        ],
+    7:  [
+          {name:'Hari Raya Aidiladha', dates:'27 Jun', type:'ph'},
+          {name:'Awal Muharram', dates:'17 Jul', type:'ph'}
+        ],
+    8:  [
+          {name:'Hari Kebangsaan', dates:'31 Ogos', type:'ph'},
+          {name:'Cuti Sekolah Penggal 2', dates:'22–30 Ogos', type:'school'}
+        ],
+    9:  [
+          {name:'Hari Malaysia', dates:'16 Sep', type:'ph'}
+        ],
+    10: [
+          {name:'Maulidur Rasul', dates:'25 Sep', type:'ph'},
+          {name:'Deepavali', dates:'8 Okt', type:'ph'}
+        ],
+    11: [
+          {name:'Cuti Sekolah Penggal 3 (Mid)', dates:'31 Okt–8 Nov', type:'school'}
+        ],
+    12: [
+          {name:'Krismas', dates:'25 Dis', type:'ph'},
+          {name:'Cuti Sekolah Akhir Tahun', dates:'19 Nov–31 Dis', type:'school'}
+        ]
+  }
+};
 
-// ── Helpers ──
+const MONTH_NAMES_MY = ['Jan','Feb','Mac','Apr','Mei','Jun','Jul','Ogo','Sep','Okt','Nov','Dis'];
+
+// Dapatkan bulan-bulan mana ada festive untuk tahun & senarai bulan tertentu
+function getFestiveMonths(years, monthNums) {
+  const result = {}; // { monthNum: [{name,dates,type}] }
+  years.forEach(yr => {
+    const yrData = FESTIVE[yr] || {};
+    monthNums.forEach(mn => {
+      const events = yrData[mn] || [];
+      if(events.length > 0){
+        if(!result[mn]) result[mn] = [];
+        events.forEach(e => {
+          // Elak duplikasi nama dalam bulan sama
+          if(!result[mn].find(x => x.name === e.name)){
+            result[mn].push(e);
+          }
+        });
+      }
+    });
+  });
+  return result;
+}
+
+// Build label dengan bintang jika bulan tu ada festive
+function buildLabels(baseLabels, monthNums, festiveMonths) {
+  return baseLabels.map((lbl, i) => {
+    const mn = monthNums[i];
+    return festiveMonths[mn] ? lbl + ' ⭐' : lbl;
+  });
+}
+
+// Render legend festive
+function renderFestiveLegend(elId, festiveMonths, monthNums) {
+  const el = document.getElementById(elId);
+  if(!el) return;
+  const entries = monthNums
+    .filter(mn => festiveMonths[mn])
+    .map(mn => {
+      const events = festiveMonths[mn];
+      const evHtml = events.map(e =>
+        `<span class="${e.type === 'ph' ? 'festive-ph' : 'festive-school'}">${e.name} (${e.dates})</span>`
+      ).join('');
+      return `<div class="festive-item"><span class="festive-month">${MONTH_NAMES_MY[mn-1]}</span><div class="festive-events">${evHtml}</div></div>`;
+    }).join('');
+
+  el.innerHTML = entries || '<span style="font-family:var(--mono);font-size:10px;color:var(--muted)">Tiada cuti umum / sekolah dalam tempoh ini</span>';
+}
+
+// ── Global ──
+let DB = {};
 const fmt  = n => 'RM ' + (+n).toLocaleString('ms-MY', {minimumFractionDigits:2, maximumFractionDigits:2});
 const fmtN = n => (+n).toLocaleString('ms-MY');
 const pct  = (a,b) => b===0 ? '0%' : (a/b*100).toFixed(1)+'%';
@@ -356,150 +459,127 @@ function destroyAll(){
   charts={};
 }
 
-// ── Aggregate data ikut year+month filter ──
 function getFiltered(year, month){
   const keys = Object.keys(DB.months || {});
-
   const matched = keys.filter(k => {
     const m = DB.months[k];
     if(m.year !== year) return false;
     if(month !== 0 && m.month_num !== month) return false;
     return true;
   });
-
   if(matched.length === 0) return null;
 
-  let oSales=0, bSales=0, eSales=0, rSales=0;
-  let oTix=0, bTix=0, eTix=0, rTix=0;
-  let botFee=0, easiFee=0, redFee=0, redRefund=0;
-  let fromMap={}, toMap={}, opsMap={};
-  let byChFrom={}, byChTo={}, byChOps={};
+  let oSales=0,bSales=0,eSales=0,rSales=0;
+  let oTix=0,bTix=0,eTix=0,rTix=0;
+  let botFee=0,easiFee=0,redFee=0,redRefund=0;
+  let fromMap={},toMap={},opsMap={};
+  let byChFrom={},byChTo={},byChOps={};
 
   matched.forEach(k => {
     const m = DB.months[k];
-    oSales += m.sales.OTS  || 0;
-    bSales += m.sales.BOT  || 0;
-    eSales += m.sales.EASI || 0;
-    rSales += m.sales.RED  || 0;
-    oTix   += m.tickets.OTS  || 0;
-    bTix   += m.tickets.BOT  || 0;
-    eTix   += m.tickets.EASI || 0;
-    rTix   += m.tickets.RED  || 0;
-    botFee    += m.api_fees.BOT        || 0;
-    easiFee   += m.api_fees.EASI       || 0;
-    redFee    += m.api_fees.RED        || 0;
-    redRefund += m.api_fees.RED_refund || 0;
-
-    (m.top_from||[]).forEach(r=>{ fromMap[r.name] = (fromMap[r.name]||0) + r.val; });
-    (m.top_to  ||[]).forEach(r=>{ toMap[r.name]   = (toMap[r.name]  ||0) + r.val; });
-    (m.top_ops ||[]).forEach(r=>{ opsMap[r.name]  = (opsMap[r.name] ||0) + r.val; });
-
+    oSales += m.sales.OTS||0; bSales += m.sales.BOT||0;
+    eSales += m.sales.EASI||0; rSales += m.sales.RED||0;
+    oTix += m.tickets.OTS||0; bTix += m.tickets.BOT||0;
+    eTix += m.tickets.EASI||0; rTix += m.tickets.RED||0;
+    botFee    += m.api_fees.BOT||0;
+    easiFee   += m.api_fees.EASI||0;
+    redFee    += m.api_fees.RED||0;
+    redRefund += m.api_fees.RED_refund||0;
+    (m.top_from||[]).forEach(r=>{ fromMap[r.name]=(fromMap[r.name]||0)+r.val; });
+    (m.top_to  ||[]).forEach(r=>{ toMap[r.name]  =(toMap[r.name]  ||0)+r.val; });
+    (m.top_ops ||[]).forEach(r=>{ opsMap[r.name] =(opsMap[r.name] ||0)+r.val; });
     ['OTS','BOT','EASI','RED'].forEach(ch => {
-      const cb = m.top_by_ch?.[ch] || {from:[],to:[],ops:[]};
+      const cb = m.top_by_ch?.[ch]||{from:[],to:[],ops:[]};
       if(!byChFrom[ch]) byChFrom[ch]={};
       if(!byChTo[ch])   byChTo[ch]={};
       if(!byChOps[ch])  byChOps[ch]={};
-      (cb.from||[]).forEach(r=>{ byChFrom[ch][r.name] = (byChFrom[ch][r.name]||0)+r.val; });
-      (cb.to  ||[]).forEach(r=>{ byChTo[ch][r.name]   = (byChTo[ch][r.name]  ||0)+r.val; });
-      (cb.ops ||[]).forEach(r=>{ byChOps[ch][r.name]  = (byChOps[ch][r.name] ||0)+r.val; });
+      (cb.from||[]).forEach(r=>{ byChFrom[ch][r.name]=(byChFrom[ch][r.name]||0)+r.val; });
+      (cb.to  ||[]).forEach(r=>{ byChTo[ch][r.name]  =(byChTo[ch][r.name]  ||0)+r.val; });
+      (cb.ops ||[]).forEach(r=>{ byChOps[ch][r.name] =(byChOps[ch][r.name] ||0)+r.val; });
     });
   });
 
-  const topN = (map,n=5) => Object.entries(map)
-    .map(([name,val])=>({name,val}))
-    .sort((a,b)=>b.val-a.val).slice(0,n);
+  const topN = (map,n=5) => Object.entries(map).map(([name,val])=>({name,val})).sort((a,b)=>b.val-a.val).slice(0,n);
 
-  const MONTH_NAMES = ['Jan','Feb','Mac','Apr','Mei','Jun','Jul','Ogo','Sep','Okt','Nov','Dis'];
-  let labels=[], oLine=[], bLine=[], eLine=[], rLine=[];
-  let oTixLine=[], bTixLine=[], eTixLine=[], rTixLine=[];
+  let labels=[],monthNums=[];
+  let oLine=[],bLine=[],eLine=[],rLine=[];
+  let oTixLine=[],bTixLine=[],eTixLine=[],rTixLine=[];
 
   if(month === 0){
-    for(let mn=1; mn<=12; mn++){
-      const k = `${year}-${String(mn).padStart(2,'0')}`;
-      const m = DB.months[k];
-      labels.push(MONTH_NAMES[mn-1]);
-      oLine.push(m ? (m.sales.OTS||0)  : 0);
-      bLine.push(m ? (m.sales.BOT||0)  : 0);
-      eLine.push(m ? (m.sales.EASI||0) : 0);
-      rLine.push(m ? (m.sales.RED||0)  : 0);
-      oTixLine.push(m ? (m.tickets.OTS||0)  : 0);
-      bTixLine.push(m ? (m.tickets.BOT||0)  : 0);
-      eTixLine.push(m ? (m.tickets.EASI||0) : 0);
-      rTixLine.push(m ? (m.tickets.RED||0)  : 0);
+    for(let mn=1;mn<=12;mn++){
+      const k=`${year}-${String(mn).padStart(2,'0')}`;
+      const m=DB.months[k];
+      labels.push(MONTH_NAMES_MY[mn-1]);
+      monthNums.push(mn);
+      oLine.push(m?(m.sales.OTS||0):0);
+      bLine.push(m?(m.sales.BOT||0):0);
+      eLine.push(m?(m.sales.EASI||0):0);
+      rLine.push(m?(m.sales.RED||0):0);
+      oTixLine.push(m?(m.tickets.OTS||0):0);
+      bTixLine.push(m?(m.tickets.BOT||0):0);
+      eTixLine.push(m?(m.tickets.EASI||0):0);
+      rTixLine.push(m?(m.tickets.RED||0):0);
     }
   } else {
-    for(let i=5; i>=0; i--){
-      let mn = month - i;
-      let yr = year;
-      if(mn <= 0){ mn += 12; yr -= 1; }
-      const k = `${yr}-${String(mn).padStart(2,'0')}`;
-      const m = DB.months[k];
-      labels.push(MONTH_NAMES[mn-1]);
-      oLine.push(m ? (m.sales.OTS||0)  : 0);
-      bLine.push(m ? (m.sales.BOT||0)  : 0);
-      eLine.push(m ? (m.sales.EASI||0) : 0);
-      rLine.push(m ? (m.sales.RED||0)  : 0);
-      oTixLine.push(m ? (m.tickets.OTS||0)  : 0);
-      bTixLine.push(m ? (m.tickets.BOT||0)  : 0);
-      eTixLine.push(m ? (m.tickets.EASI||0) : 0);
-      rTixLine.push(m ? (m.tickets.RED||0)  : 0);
+    for(let i=5;i>=0;i--){
+      let mn=month-i, yr=year;
+      if(mn<=0){mn+=12;yr-=1;}
+      const k=`${yr}-${String(mn).padStart(2,'0')}`;
+      const m=DB.months[k];
+      labels.push(MONTH_NAMES_MY[mn-1]);
+      monthNums.push(mn);
+      oLine.push(m?(m.sales.OTS||0):0);
+      bLine.push(m?(m.sales.BOT||0):0);
+      eLine.push(m?(m.sales.EASI||0):0);
+      rLine.push(m?(m.sales.RED||0):0);
+      oTixLine.push(m?(m.tickets.OTS||0):0);
+      bTixLine.push(m?(m.tickets.BOT||0):0);
+      eTixLine.push(m?(m.tickets.EASI||0):0);
+      rTixLine.push(m?(m.tickets.RED||0):0);
     }
   }
 
   return {
-    oSales, bSales, eSales, rSales,
-    totalSales: oSales+bSales+eSales+rSales,
-    oTix, bTix, eTix, rTix,
-    totalTix: oTix+bTix+eTix+rTix,
-    botFee, easiFee, redFee, redRefund,
-    labels, oLine, bLine, eLine, rLine,
-    oTixLine, bTixLine, eTixLine, rTixLine,
-    topFrom: topN(fromMap),
-    topTo:   topN(toMap),
-    topOps:  topN(opsMap),
-    top_by_ch: {
-      OTS:  { from: topN(byChFrom.OTS||{}),  to: topN(byChTo.OTS||{}),  ops: topN(byChOps.OTS||{})  },
-      BOT:  { from: topN(byChFrom.BOT||{}),  to: topN(byChTo.BOT||{}),  ops: topN(byChOps.BOT||{})  },
-      EASI: { from: topN(byChFrom.EASI||{}), to: topN(byChTo.EASI||{}), ops: topN(byChOps.EASI||{}) },
-      RED:  { from: topN(byChFrom.RED||{}),  to: topN(byChTo.RED||{}),  ops: topN(byChOps.RED||{})  },
+    oSales,bSales,eSales,rSales,
+    totalSales:oSales+bSales+eSales+rSales,
+    oTix,bTix,eTix,rTix,
+    totalTix:oTix+bTix+eTix+rTix,
+    botFee,easiFee,redFee,redRefund,
+    labels,monthNums,
+    oLine,bLine,eLine,rLine,
+    oTixLine,bTixLine,eTixLine,rTixLine,
+    topFrom:topN(fromMap),topTo:topN(toMap),topOps:topN(opsMap),
+    top_by_ch:{
+      OTS: {from:topN(byChFrom.OTS||{}),to:topN(byChTo.OTS||{}),ops:topN(byChOps.OTS||{})},
+      BOT: {from:topN(byChFrom.BOT||{}),to:topN(byChTo.BOT||{}),ops:topN(byChOps.BOT||{})},
+      EASI:{from:topN(byChFrom.EASI||{}),to:topN(byChTo.EASI||{}),ops:topN(byChOps.EASI||{})},
+      RED: {from:topN(byChFrom.RED||{}),to:topN(byChTo.RED||{}),ops:topN(byChOps.RED||{})},
     }
   };
 }
 
-// ── Chart helpers ──
 function makeGroupedBar(id, labels, datasets, yLabel){
   const ctx = document.getElementById(id);
   return new Chart(ctx,{
     type:'bar',
-    data:{ labels, datasets },
+    data:{labels,datasets},
     options:{
       plugins:{
-        legend:{
-          display:true,
-          labels:{color:tc,font:{family:'JetBrains Mono',size:10},boxWidth:8,padding:10}
-        }
+        legend:{display:true,labels:{color:tc,font:{family:'JetBrains Mono',size:10},boxWidth:8,padding:10}}
       },
       scales:{
-        x:{
-          grid:{color:gc},
-          ticks:{color:tc,font:{family:'JetBrains Mono',size:9},maxRotation:45}
-        },
-        y:{
-          grid:{color:gc},
-          ticks:{color:tc,font:{family:'JetBrains Mono',size:9}},
-          title:{display:true,text:yLabel,color:tc,font:{size:9}}
-        }
+        x:{grid:{color:gc},ticks:{color:tc,font:{family:'JetBrains Mono',size:9},maxRotation:45}},
+        y:{grid:{color:gc},ticks:{color:tc,font:{family:'JetBrains Mono',size:9}},title:{display:true,text:yLabel,color:tc,font:{size:9}}}
       },
-      responsive:true,
-      maintainAspectRatio:true
+      responsive:true,maintainAspectRatio:true
     }
   });
 }
 
-function makeTopList(elId, items, maxVal, barColor){
-  const ul = document.getElementById(elId);
-  if(!items || items.length===0){ ul.innerHTML='<li style="color:var(--muted);font-size:12px">Tiada data</li>'; return; }
-  ul.innerHTML = items.map((item,i)=>`
+function makeTopList(elId,items,maxVal,barColor){
+  const ul=document.getElementById(elId);
+  if(!items||items.length===0){ul.innerHTML='<li style="color:var(--muted);font-size:12px">Tiada data</li>';return;}
+  ul.innerHTML=items.map((item,i)=>`
     <li>
       <span class="top-rank">${String(i+1).padStart(2,'0')}</span>
       <span class="top-name">${item.name}</span>
@@ -508,54 +588,41 @@ function makeTopList(elId, items, maxVal, barColor){
     </li>`).join('');
 }
 
-// ── Trend indicator ──
-function getPrevKey(year, month){
-  if(month === 0) return null;
-  let pm = month - 1, py = year;
-  if(pm === 0){ pm = 12; py -= 1; }
+function getPrevKey(year,month){
+  if(month===0) return null;
+  let pm=month-1,py=year;
+  if(pm===0){pm=12;py-=1;}
   return `${py}-${String(pm).padStart(2,'0')}`;
 }
 
-function renderTrend(elId, current, prev){
-  const el = document.getElementById(elId);
+function renderTrend(elId,current,prev){
+  const el=document.getElementById(elId);
   if(!el) return;
-  if(prev === null || prev === undefined || prev === 0){
-    el.innerHTML = '';
-    return;
-  }
-  const diff    = current - prev;
-  const diffPct = (diff / prev * 100).toFixed(1);
-  const isUp    = diff >= 0;
-  const cls     = isUp ? 'trend-up' : 'trend-dn';
-  const arrow   = isUp
-    ? '<svg width="9" height="9" viewBox="0 0 10 10"><polygon points="5,1 9,9 1,9" fill="currentColor"/></svg>'
-    : '<svg width="9" height="9" viewBox="0 0 10 10"><polygon points="5,9 9,1 1,1" fill="currentColor"/></svg>';
-  const sign    = isUp ? '+' : '';
-  const fmtDiff = typeof current === 'float' || current % 1 !== 0
-    ? `${sign}RM ${Math.abs(diff).toLocaleString('ms-MY',{minimumFractionDigits:2,maximumFractionDigits:2})}`
-    : `${sign}${Math.abs(diff).toLocaleString('ms-MY')}`;
-
-  el.innerHTML = `
-    <span class="trend-arrow ${cls}">${arrow} ${sign}${diffPct}%</span>
-    <span class="trend-rm ${cls}">${fmtDiff}</span>
-  `;
+  if(prev===null||prev===undefined||prev===0){el.innerHTML='';return;}
+  const diff=current-prev;
+  const diffPct=(diff/prev*100).toFixed(1);
+  const isUp=diff>=0;
+  const cls=isUp?'trend-up':'trend-dn';
+  const arrow=isUp
+    ?'<svg width="9" height="9" viewBox="0 0 10 10"><polygon points="5,1 9,9 1,9" fill="currentColor"/></svg>'
+    :'<svg width="9" height="9" viewBox="0 0 10 10"><polygon points="5,9 9,1 1,1" fill="currentColor"/></svg>';
+  const sign=isUp?'+':'';
+  const fmtDiff=current%1!==0
+    ?`${sign}RM ${Math.abs(diff).toLocaleString('ms-MY',{minimumFractionDigits:2,maximumFractionDigits:2})}`
+    :`${sign}${Math.abs(diff).toLocaleString('ms-MY')}`;
+  el.innerHTML=`<span class="trend-arrow ${cls}">${arrow} ${sign}${diffPct}%</span><span class="trend-rm ${cls}">${fmtDiff}</span>`;
 }
 
-// ── Main render ──
 function render(){
   const year  = +document.getElementById('sel-year').value;
   const month = +document.getElementById('sel-month').value;
-  const mNames = ['','Januari','Februari','Mac','April','Mei','Jun','Julai','Ogos','September','Oktober','November','Disember'];
-  document.getElementById('hdr-period').textContent = month===0 ? year+' — Semua Bulan' : year+' — '+mNames[month];
+  const mNames=['','Januari','Februari','Mac','April','Mei','Jun','Julai','Ogos','September','Oktober','November','Disember'];
+  document.getElementById('hdr-period').textContent = month===0?year+' — Semua Bulan':year+' — '+mNames[month];
 
   const d = getFiltered(year, month);
+  if(!d){document.getElementById('hdr-period').textContent+=' (tiada data)';return;}
 
-  if(!d){
-    document.getElementById('hdr-period').textContent += ' (tiada data)';
-    return;
-  }
-
-  // KPI Jualan
+  // KPI
   document.getElementById('k-ots-sales').textContent  = fmt(d.oSales);
   document.getElementById('k-bot-sales').textContent  = fmt(d.bSales);
   document.getElementById('k-easi-sales').textContent = fmt(d.eSales);
@@ -564,109 +631,106 @@ function render(){
   document.getElementById('k-bot-pct').textContent    = pct(d.bSales,d.totalSales);
   document.getElementById('k-easi-pct').textContent   = pct(d.eSales,d.totalSales);
   document.getElementById('k-red-pct').textContent    = pct(d.rSales,d.totalSales);
+  document.getElementById('k-ots-tix').textContent    = fmtN(d.oTix);
+  document.getElementById('k-bot-tix').textContent    = fmtN(d.bTix);
+  document.getElementById('k-easi-tix').textContent   = fmtN(d.eTix);
+  document.getElementById('k-red-tix').textContent    = fmtN(d.rTix);
+  document.getElementById('k-ots-tpct').textContent   = pct(d.oTix,d.totalTix);
+  document.getElementById('k-bot-tpct').textContent   = pct(d.bTix,d.totalTix);
+  document.getElementById('k-easi-tpct').textContent  = pct(d.eTix,d.totalTix);
+  document.getElementById('k-red-tpct').textContent   = pct(d.rTix,d.totalTix);
 
-  // KPI Tiket
-  document.getElementById('k-ots-tix').textContent   = fmtN(d.oTix);
-  document.getElementById('k-bot-tix').textContent   = fmtN(d.bTix);
-  document.getElementById('k-easi-tix').textContent  = fmtN(d.eTix);
-  document.getElementById('k-red-tix').textContent   = fmtN(d.rTix);
-  document.getElementById('k-ots-tpct').textContent  = pct(d.oTix,d.totalTix);
-  document.getElementById('k-bot-tpct').textContent  = pct(d.bTix,d.totalTix);
-  document.getElementById('k-easi-tpct').textContent = pct(d.eTix,d.totalTix);
-  document.getElementById('k-red-tpct').textContent  = pct(d.rTix,d.totalTix);
-
-  // Trend indicators
-  const prevKey = (month !== 0) ? getPrevKey(year, month) : null;
-  const prev    = prevKey && DB.months[prevKey] ? DB.months[prevKey] : null;
-
+  const prevKey=(month!==0)?getPrevKey(year,month):null;
+  const prev=prevKey&&DB.months[prevKey]?DB.months[prevKey]:null;
   if(prev){
-    renderTrend('trend-ots-sales',  d.oSales,  prev.sales.OTS);
-    renderTrend('trend-bot-sales',  d.bSales,  prev.sales.BOT);
-    renderTrend('trend-easi-sales', d.eSales,  prev.sales.EASI);
-    renderTrend('trend-red-sales',  d.rSales,  prev.sales.RED);
-    renderTrend('trend-ots-tix',    d.oTix,    prev.tickets.OTS);
-    renderTrend('trend-bot-tix',    d.bTix,    prev.tickets.BOT);
-    renderTrend('trend-easi-tix',   d.eTix,    prev.tickets.EASI);
-    renderTrend('trend-red-tix',    d.rTix,    prev.tickets.RED);
+    renderTrend('trend-ots-sales',d.oSales,prev.sales.OTS);
+    renderTrend('trend-bot-sales',d.bSales,prev.sales.BOT);
+    renderTrend('trend-easi-sales',d.eSales,prev.sales.EASI);
+    renderTrend('trend-red-sales',d.rSales,prev.sales.RED);
+    renderTrend('trend-ots-tix',d.oTix,prev.tickets.OTS);
+    renderTrend('trend-bot-tix',d.bTix,prev.tickets.BOT);
+    renderTrend('trend-easi-tix',d.eTix,prev.tickets.EASI);
+    renderTrend('trend-red-tix',d.rTix,prev.tickets.RED);
   } else {
-    ['ots','bot','easi','red'].forEach(ch => {
-      document.getElementById(`trend-${ch}-sales`).innerHTML = '';
-      document.getElementById(`trend-${ch}-tix`).innerHTML   = '';
+    ['ots','bot','easi','red'].forEach(ch=>{
+      document.getElementById(`trend-${ch}-sales`).innerHTML='';
+      document.getElementById(`trend-${ch}-tix`).innerHTML='';
     });
   }
 
-  // API Fees
   document.getElementById('api-bot').textContent        = fmt(d.botFee);
   document.getElementById('api-easi').textContent       = fmt(d.easiFee);
   document.getElementById('api-red').textContent        = fmt(d.redFee);
   document.getElementById('api-red-refund').textContent = fmt(d.redRefund);
   document.getElementById('api-total').textContent      = fmt(d.botFee+d.easiFee+d.redFee+d.redRefund);
 
-  // Combined Charts
+  // Festive — tentukan tahun mana nak check
+  // Kalau semua bulan: guna tahun filter sahaja
+  // Kalau bulan spesifik (6 bulan context): mungkin ada 2 tahun (cross-year)
+  let festiveYears = [year];
+  if(month !== 0 && month <= 5){
+    // 6 bulan ke belakang mungkin masuk tahun sebelumnya
+    festiveYears = [year-1, year];
+  }
+  const festiveMonths = getFestiveMonths(festiveYears, d.monthNums);
+  const labelWithStar = buildLabels(d.labels, d.monthNums, festiveMonths);
+
+  // Charts
   destroyAll();
-  charts.salesCombined = makeGroupedBar('ch-combined-sales', d.labels, [
-    { label:'OTS',  data:d.oLine, backgroundColor:'#3b82f633', borderColor:'#3b82f6', borderWidth:1, borderRadius:3 },
-    { label:'BOT',  data:d.bLine, backgroundColor:'#10b98133', borderColor:'#10b981', borderWidth:1, borderRadius:3 },
-    { label:'EASI', data:d.eLine, backgroundColor:'#a78bfa33', borderColor:'#a78bfa', borderWidth:1, borderRadius:3 },
-    { label:'RED',  data:d.rLine, backgroundColor:'#f8717133', borderColor:'#f87171', borderWidth:1, borderRadius:3 },
+  charts.salesCombined = makeGroupedBar('ch-combined-sales', labelWithStar, [
+    {label:'OTS',  data:d.oLine, backgroundColor:'#3b82f633', borderColor:'#3b82f6', borderWidth:1, borderRadius:3},
+    {label:'BOT',  data:d.bLine, backgroundColor:'#10b98133', borderColor:'#10b981', borderWidth:1, borderRadius:3},
+    {label:'EASI', data:d.eLine, backgroundColor:'#a78bfa33', borderColor:'#a78bfa', borderWidth:1, borderRadius:3},
+    {label:'RED',  data:d.rLine, backgroundColor:'#f8717133', borderColor:'#f87171', borderWidth:1, borderRadius:3},
   ], 'RM');
 
-  charts.tixCombined = makeGroupedBar('ch-combined-tix', d.labels, [
-    { label:'OTS',  data:d.oTixLine, backgroundColor:'#3b82f633', borderColor:'#3b82f6', borderWidth:1, borderRadius:3 },
-    { label:'BOT',  data:d.bTixLine, backgroundColor:'#10b98133', borderColor:'#10b981', borderWidth:1, borderRadius:3 },
-    { label:'EASI', data:d.eTixLine, backgroundColor:'#a78bfa33', borderColor:'#a78bfa', borderWidth:1, borderRadius:3 },
-    { label:'RED',  data:d.rTixLine, backgroundColor:'#f8717133', borderColor:'#f87171', borderWidth:1, borderRadius:3 },
+  charts.tixCombined = makeGroupedBar('ch-combined-tix', labelWithStar, [
+    {label:'OTS',  data:d.oTixLine, backgroundColor:'#3b82f633', borderColor:'#3b82f6', borderWidth:1, borderRadius:3},
+    {label:'BOT',  data:d.bTixLine, backgroundColor:'#10b98133', borderColor:'#10b981', borderWidth:1, borderRadius:3},
+    {label:'EASI', data:d.eTixLine, backgroundColor:'#a78bfa33', borderColor:'#a78bfa', borderWidth:1, borderRadius:3},
+    {label:'RED',  data:d.rTixLine, backgroundColor:'#f8717133', borderColor:'#f87171', borderWidth:1, borderRadius:3},
   ], 'Tiket');
 
-  // Market share doughnut
-  const shareColors = ['#3b82f6','#10b981','#a78bfa','#f87171'];
-  const shareSales  = [d.oSales, d.bSales, d.eSales, d.rSales];
-  const shareTix    = [d.oTix,   d.bTix,   d.eTix,   d.rTix];
-  const shareTotal  = d.totalSales;
-  const shareTixTotal = d.totalTix;
+  // Render legend festive (sama untuk kedua-dua chart)
+  renderFestiveLegend('festive-legend-sales', festiveMonths, d.monthNums);
+  renderFestiveLegend('festive-legend-tix',   festiveMonths, d.monthNums);
 
-  charts.share = new Chart(document.getElementById('ch-share'),{
+  // Market share
+  const shareColors=['#3b82f6','#10b981','#a78bfa','#f87171'];
+  const shareSales=[d.oSales,d.bSales,d.eSales,d.rSales];
+  const shareTix=[d.oTix,d.bTix,d.eTix,d.rTix];
+  const shareTotal=d.totalSales;
+  const shareTixTotal=d.totalTix;
+
+  charts.share=new Chart(document.getElementById('ch-share'),{
     type:'doughnut',
-    data:{
-      labels:['OTS','BOT','EASI','RED'],
-      datasets:[{data:shareSales, backgroundColor:shareColors, borderWidth:0, hoverOffset:8}]
-    },
+    data:{labels:['OTS','BOT','EASI','RED'],datasets:[{data:shareSales,backgroundColor:shareColors,borderWidth:0,hoverOffset:8}]},
     options:{
       plugins:{
         legend:{display:false},
-        tooltip:{callbacks:{label:ctx=>{
-          const p=(ctx.parsed/shareTotal*100).toFixed(1);
-          return ` ${ctx.label}: ${p}% — ${fmt(ctx.parsed)}`;
-        }}}
+        tooltip:{callbacks:{label:ctx=>{const p=(ctx.parsed/shareTotal*100).toFixed(1);return ` ${ctx.label}: ${p}% — ${fmt(ctx.parsed)}`;}}}
       },
-      cutout:'58%',
+      cutout:'58%'
     },
     plugins:[{
       id:'pctLabels',
       afterDraw(chart){
         const {ctx,chartArea:{width,height,left,top}}=chart;
-        const cx=left+width/2, cy=top+height/2;
+        const cx=left+width/2,cy=top+height/2;
         const meta=chart.getDatasetMeta(0);
         meta.data.forEach((arc,i)=>{
           const angle=(arc.startAngle+arc.endAngle)/2;
           const r=(arc.outerRadius+arc.innerRadius)/2;
-          const x=cx+Math.cos(angle)*r, y=cy+Math.sin(angle)*r;
+          const x=cx+Math.cos(angle)*r,y=cy+Math.sin(angle)*r;
           const p=(shareSales[i]/shareTotal*100).toFixed(1);
-          ctx.save();
-          ctx.font='500 11px JetBrains Mono,monospace';
-          ctx.fillStyle='#fff';
-          ctx.textAlign='center';
-          ctx.textBaseline='middle';
-          ctx.fillText(p+'%',x,y);
-          ctx.restore();
+          ctx.save();ctx.font='500 11px JetBrains Mono,monospace';ctx.fillStyle='#fff';
+          ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(p+'%',x,y);ctx.restore();
         });
       }
     }]
   });
 
-  // Share summary card
-  const chLabels = ['OTS','BOT','EASI','RED'];
-  document.getElementById('share-summary').innerHTML = chLabels.map((lbl,i) => `
+  document.getElementById('share-summary').innerHTML=(['OTS','BOT','EASI','RED']).map((lbl,i)=>`
     <div style="display:flex;align-items:center;gap:12px;">
       <div style="width:3px;height:36px;border-radius:2px;background:${shareColors[i]};flex-shrink:0;"></div>
       <div style="flex:1;">
@@ -678,7 +742,7 @@ function render(){
     </div>
   `).join('<div style="height:1px;background:var(--b);margin:2px 0;"></div>');
 
-  document.getElementById('share-breakdown').innerHTML = `
+  document.getElementById('share-breakdown').innerHTML=`
     <div style="display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:4px 10px;font-family:var(--mono);font-size:10px;">
       <div></div>
       <div style="color:var(--muted);letter-spacing:.08em">JUALAN (RM)</div>
@@ -697,23 +761,17 @@ function render(){
       <div style="color:var(--text);padding-top:4px;border-top:1px solid var(--b);font-weight:500">${fmt(shareTotal)}</div>
       <div style="color:var(--text);padding-top:4px;border-top:1px solid var(--b);font-weight:500">${fmtN(shareTixTotal)}</div>
       <div style="color:var(--muted);padding-top:4px;border-top:1px solid var(--b)">100%</div>
-    </div>
-  `;
+    </div>`;
 
-  // Top lists — per saluran
-  const chColors = {OTS:'#3b82f6', BOT:'#10b981', EASI:'#a78bfa', RED:'#f87171'};
-  const topByCh = d.top_by_ch || {};
-
-  ['ots','bot','easi','red'].forEach(ch => {
-    const CH = ch.toUpperCase() === 'EASI' ? 'EASI' : ch.toUpperCase();
-    const chData = topByCh[CH] || {from:[], to:[], ops:[]};
-    const color  = chColors[CH];
-    const maxFrom = chData.from[0]?.val || 1;
-    const maxTo   = chData.to[0]?.val   || 1;
-    const maxOps  = chData.ops[0]?.val  || 1;
-    makeTopList(`top-from-${ch}`, chData.from, maxFrom, color);
-    makeTopList(`top-to-${ch}`,   chData.to,   maxTo,   color);
-    makeTopList(`top-ops-${ch}`,  chData.ops,  maxOps,  color);
+  const chColors={OTS:'#3b82f6',BOT:'#10b981',EASI:'#a78bfa',RED:'#f87171'};
+  const topByCh=d.top_by_ch||{};
+  ['ots','bot','easi','red'].forEach(ch=>{
+    const CH=ch.toUpperCase();
+    const chData=topByCh[CH]||{from:[],to:[],ops:[]};
+    const color=chColors[CH];
+    makeTopList(`top-from-${ch}`,chData.from,chData.from[0]?.val||1,color);
+    makeTopList(`top-to-${ch}`,  chData.to,  chData.to[0]?.val  ||1,color);
+    makeTopList(`top-ops-${ch}`, chData.ops, chData.ops[0]?.val ||1,color);
   });
 }
 
@@ -723,29 +781,24 @@ function resetFilter(){
   render();
 }
 
-// ── Load data.json dan init ──
 async function init(){
-  try {
-    const res = await fetch('data.json?v=' + Date.now());
+  try{
+    const res=await fetch('data.json?v='+Date.now());
     if(!res.ok) throw new Error('Gagal fetch data.json');
-    DB = await res.json();
-
-    const years = [...new Set(Object.values(DB.months).map(m=>m.year))].sort((a,b)=>b-a);
-    const selYear = document.getElementById('sel-year');
-    selYear.innerHTML = years.map(y=>`<option value="${y}">${y}</option>`).join('');
-
-    selYear.value = years[0];
-    document.getElementById('sel-month').value = '0';
-
+    DB=await res.json();
+    const years=[...new Set(Object.values(DB.months).map(m=>m.year))].sort((a,b)=>b-a);
+    const selYear=document.getElementById('sel-year');
+    selYear.innerHTML=years.map(y=>`<option value="${y}">${y}</option>`).join('');
+    selYear.value=years[0];
+    document.getElementById('sel-month').value='0';
     render();
-  } catch(e) {
+  }catch(e){
     console.error(e);
-    document.getElementById('hdr-period').textContent = 'Gagal memuatkan data';
+    document.getElementById('hdr-period').textContent='Gagal memuatkan data';
   }
 }
 
 init();
 </script>
-
 </body>
 </html>
