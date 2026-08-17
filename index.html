@@ -33,9 +33,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:1
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background-image:linear-gradient(var(--b) 1px,transparent 1px),linear-gradient(90deg,var(--b) 1px,transparent 1px);
   background-size:48px 48px;opacity:.12;}
-
 .wrap{max-width:1280px;margin:0 auto;padding:28px 20px;position:relative;z-index:1;}
-
 header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:24px;flex-wrap:wrap;gap:12px;}
 .hd-left .eyebrow{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px;}
 .hd-left h1{font-size:22px;font-weight:600;letter-spacing:-.02em;}
@@ -43,17 +41,14 @@ header{display:flex;justify-content:space-between;align-items:flex-end;margin-bo
 .live-badge{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;color:var(--acc2);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:5px 12px;border-radius:4px;}
 .live-dot{width:6px;height:6px;background:var(--acc2);border-radius:50%;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
-
 .filters{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;align-items:center;}
 .filter-label{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-right:4px;}
 select{background:var(--s2);color:var(--text);border:1px solid var(--b);border-radius:6px;padding:7px 12px;font-family:var(--mono);font-size:12px;cursor:pointer;outline:none;transition:border-color .2s;}
 select:hover,select:focus{border-color:var(--acc);}
 .filter-reset{font-family:var(--mono);font-size:10px;color:var(--muted);background:none;border:1px solid var(--b2);border-radius:4px;padding:6px 12px;cursor:pointer;transition:all .2s;letter-spacing:.06em;}
 .filter-reset:hover{color:var(--text);border-color:var(--muted);}
-
 .sec-label{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
 .sec-label::after{content:'';flex:1;height:1px;background:var(--b);}
-
 .kpi-group{margin-bottom:20px;}
 .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
 .kpi-card{background:var(--s1);border:1px solid var(--b);border-radius:10px;padding:20px;position:relative;overflow:hidden;transition:border-color .25s,transform .2s;}
@@ -65,7 +60,6 @@ select:hover,select:focus{border-color:var(--acc);}
 .kpi-row-item{display:flex;justify-content:space-between;align-items:center;font-size:12px;}
 .kpi-row-item .label{color:var(--muted);font-family:var(--mono);font-size:11px;}
 .kpi-row-item .val{font-family:var(--mono);font-weight:500;}
-
 .api-card{background:var(--s1);border:1px solid var(--b);border-radius:10px;padding:20px;position:relative;overflow:hidden;margin-bottom:20px;}
 .api-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--acc3);}
 .api-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:14px;}
@@ -74,21 +68,18 @@ select:hover,select:focus{border-color:var(--acc);}
 .api-item-val{font-family:var(--mono);font-size:18px;font-weight:500;color:var(--acc3);}
 .api-item.total{border-color:var(--acc3);background:rgba(245,158,11,.05);}
 .api-item.total .api-item-val{font-size:22px;color:var(--acc3);}
-
 .chart-card{background:var(--s1);border:1px solid var(--b);border-radius:10px;padding:20px;}
 .chart-title{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;}
 .chart-wrap{position:relative;}
-
 /* Festive legend */
-.festive-legend{margin-top:14px;padding-top:12px;border-top:1px solid var(--b);}
+.festive-legend{margin-top:12px;padding-top:10px;border-top:1px solid var(--b);}
 .festive-legend-title{font-family:var(--mono);font-size:9px;color:var(--muted2);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;}
-.festive-grid{display:flex;flex-wrap:wrap;gap:6px 16px;}
-.festive-item{font-family:var(--mono);font-size:10px;color:var(--muted);display:flex;align-items:flex-start;gap:4px;}
-.festive-month{color:var(--muted2);font-weight:500;min-width:28px;}
-.festive-events{display:flex;flex-direction:column;gap:2px;}
+.festive-grid{display:flex;flex-direction:column;gap:4px;}
+.festive-row{display:flex;align-items:baseline;gap:8px;font-family:var(--mono);font-size:10px;}
+.festive-month{color:var(--muted2);font-weight:500;min-width:28px;flex-shrink:0;}
+.festive-events{display:flex;flex-wrap:wrap;gap:4px 10px;}
 .festive-ph{color:var(--acc3);}
 .festive-school{color:var(--acc2);}
-
 .top-list{list-style:none;margin-top:4px;}
 .top-list li{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid rgba(31,45,69,.6);font-size:13px;}
 .top-list li:last-child{border-bottom:none;}
@@ -97,9 +88,7 @@ select:hover,select:focus{border-color:var(--acc);}
 .top-bar-wrap{width:50px;height:4px;background:var(--s3);border-radius:2px;flex-shrink:0;}
 .top-bar{height:4px;border-radius:2px;background:var(--acc);transition:width .6s ease;}
 .top-val{font-family:var(--mono);font-size:11px;color:var(--muted);width:68px;text-align:right;flex-shrink:0;}
-
 footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:center;padding-top:20px;border-top:1px solid var(--b);letter-spacing:.08em;margin-top:8px;}
-
 .kpi-trend{display:flex;align-items:center;justify-content:space-between;margin-top:6px;font-size:11px;font-family:var(--mono);}
 .kpi-trend:empty{display:none;}
 .trend-up{color:#34d399;}
@@ -243,10 +232,6 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
   <div class="chart-card">
     <div class="chart-title">Tiket Semua Saluran (Kiraan)</div>
     <div class="chart-wrap"><canvas id="ch-combined-tix" height="200"></canvas></div>
-    <div class="festive-legend">
-      <div class="festive-legend-title">⭐ Cuti Umum &amp; Sekolah</div>
-      <div class="festive-grid" id="festive-legend-tix"></div>
-    </div>
   </div>
 </div>
 
@@ -295,65 +280,43 @@ footer{font-family:var(--mono);font-size:10px;color:var(--muted2);text-align:cen
 </div>
 
 <script>
-// ── Public Holidays & Cuti Sekolah Semenanjung Malaysia ──
-// Format: { year: { monthNum: [ {name, dates, type:'ph'|'school'} ] } }
+// ── Public Holidays utama & Cuti Sekolah Semenanjung Malaysia ──
+// Hanya 6 PH utama + cuti sekolah penggal
 const FESTIVE = {
   2025: {
-    1:  [
-          {name:'Tahun Baru', dates:'1 Jan', type:'ph'},
-          {name:'Thaipusam', dates:'11 Jan', type:'ph'}
-        ],
+    1:  [{name:'Tahun Baru / New Year', dates:'1 Jan', type:'ph'}],
     2:  [
-          {name:'Tahun Baru Cina', dates:'29–30 Jan', type:'ph'},
+          {name:'Tahun Baru Cina (CNY)', dates:'29–30 Jan', type:'ph'},
           {name:'Cuti Sekolah Penggal 1 (Mid)', dates:'15–23 Feb', type:'school'}
         ],
-    3:  [
-          {name:'Hari Raya Aidilfitri', dates:'31 Mac–1 Apr', type:'ph'}
-        ],
+    3:  [{name:'Hari Raya Aidilfitri', dates:'31 Mac–1 Apr', type:'ph'}],
     4:  [
           {name:'Hari Raya Aidilfitri', dates:'31 Mac–1 Apr', type:'ph'},
           {name:'Cuti Sekolah Penggal 1', dates:'12–20 Apr', type:'school'}
         ],
-    5:  [
-          {name:'Hari Pekerja', dates:'1 Mei', type:'ph'},
-          {name:'Hari Wesak', dates:'12 Mei', type:'ph'}
-        ],
-    6:  [
-          {name:'Hari Keputeraan YDP Agong', dates:'2 Jun', type:'ph'},
-          {name:'Cuti Sekolah Penggal 2 (Mid)', dates:'31 Mei–8 Jun', type:'school'}
-        ],
-    7:  [
-          {name:'Hari Raya Aidiladha', dates:'7 Jul', type:'ph'},
-          {name:'Awal Muharram', dates:'27 Jul', type:'ph'}
-        ],
+    6:  [{name:'Cuti Sekolah Penggal 2 (Mid)', dates:'31 Mei–8 Jun', type:'school'}],
+    7:  [{name:'Hari Raya Aidiladha', dates:'7 Jul', type:'ph'}],
     8:  [
-          {name:'Hari Kebangsaan', dates:'31 Ogos', type:'ph'},
-          {name:'Cuti Sekolah Penggal 2', dates:'23 Ogos–31 Ogos', type:'school'}
+          {name:'Hari Merdeka', dates:'31 Ogos', type:'ph'},
+          {name:'Cuti Sekolah Penggal 2', dates:'23–31 Ogos', type:'school'}
         ],
     9:  [
           {name:'Hari Malaysia', dates:'16 Sep', type:'ph'},
           {name:'Cuti Sekolah Penggal 2', dates:'1–7 Sep', type:'school'}
         ],
-    10: [
-          {name:'Maulidur Rasul', dates:'5 Sep (ganti)', type:'ph'},
-          {name:'Deepavali', dates:'20 Okt', type:'ph'}
-        ],
-    11: [
-          {name:'Cuti Sekolah Penggal 3 (Mid)', dates:'1–9 Nov', type:'school'}
-        ],
+    11: [{name:'Cuti Sekolah Penggal 3 (Mid)', dates:'1–9 Nov', type:'school'}],
     12: [
-          {name:'Krismas', dates:'25 Dis', type:'ph'},
+          {name:'Tahun Baru / New Year', dates:'31 Dis–1 Jan', type:'ph'},
           {name:'Cuti Sekolah Akhir Tahun', dates:'20 Nov–31 Dis', type:'school'}
         ]
   },
   2026: {
     1:  [
-          {name:'Tahun Baru', dates:'1 Jan', type:'ph'},
-          {name:'Thaipusam', dates:'31 Jan', type:'ph'},
+          {name:'Tahun Baru / New Year', dates:'1 Jan', type:'ph'},
           {name:'Cuti Sekolah Akhir Tahun (sam.)', dates:'1–4 Jan', type:'school'}
         ],
     2:  [
-          {name:'Tahun Baru Cina', dates:'17–18 Feb', type:'ph'},
+          {name:'Tahun Baru Cina (CNY)', dates:'17–18 Feb', type:'ph'},
           {name:'Cuti Sekolah Penggal 1 (Mid)', dates:'14–22 Feb', type:'school'}
         ],
     3:  [
@@ -364,34 +327,16 @@ const FESTIVE = {
           {name:'Hari Raya Aidilfitri', dates:'20–21 Mac', type:'ph'},
           {name:'Cuti Sekolah Penggal 1', dates:'28 Mac–5 Apr', type:'school'}
         ],
-    5:  [
-          {name:'Hari Pekerja', dates:'1 Mei', type:'ph'},
-          {name:'Hari Wesak', dates:'1 Mei', type:'ph'}
-        ],
-    6:  [
-          {name:'Hari Keputeraan YDP Agong', dates:'1 Jun', type:'ph'},
-          {name:'Cuti Sekolah Penggal 2 (Mid)', dates:'30 Mei–7 Jun', type:'school'}
-        ],
-    7:  [
-          {name:'Hari Raya Aidiladha', dates:'27 Jun', type:'ph'},
-          {name:'Awal Muharram', dates:'17 Jul', type:'ph'}
-        ],
+    6:  [{name:'Cuti Sekolah Penggal 2 (Mid)', dates:'30 Mei–7 Jun', type:'school'}],
+    7:  [{name:'Hari Raya Aidiladha', dates:'27 Jun', type:'ph'}],
     8:  [
-          {name:'Hari Kebangsaan', dates:'31 Ogos', type:'ph'},
+          {name:'Hari Merdeka', dates:'31 Ogos', type:'ph'},
           {name:'Cuti Sekolah Penggal 2', dates:'22–30 Ogos', type:'school'}
         ],
-    9:  [
-          {name:'Hari Malaysia', dates:'16 Sep', type:'ph'}
-        ],
-    10: [
-          {name:'Maulidur Rasul', dates:'25 Sep', type:'ph'},
-          {name:'Deepavali', dates:'8 Okt', type:'ph'}
-        ],
-    11: [
-          {name:'Cuti Sekolah Penggal 3 (Mid)', dates:'31 Okt–8 Nov', type:'school'}
-        ],
+    9:  [{name:'Hari Malaysia', dates:'16 Sep', type:'ph'}],
+    11: [{name:'Cuti Sekolah Penggal 3 (Mid)', dates:'31 Okt–8 Nov', type:'school'}],
     12: [
-          {name:'Krismas', dates:'25 Dis', type:'ph'},
+          {name:'Tahun Baru / New Year', dates:'31 Dis–1 Jan', type:'ph'},
           {name:'Cuti Sekolah Akhir Tahun', dates:'19 Nov–31 Dis', type:'school'}
         ]
   }
@@ -399,9 +344,8 @@ const FESTIVE = {
 
 const MONTH_NAMES_MY = ['Jan','Feb','Mac','Apr','Mei','Jun','Jul','Ogo','Sep','Okt','Nov','Dis'];
 
-// Dapatkan bulan-bulan mana ada festive untuk tahun & senarai bulan tertentu
-function getFestiveMonths(years, monthNums) {
-  const result = {}; // { monthNum: [{name,dates,type}] }
+function getFestiveMonths(years, monthNums){
+  const result = {};
   years.forEach(yr => {
     const yrData = FESTIVE[yr] || {};
     monthNums.forEach(mn => {
@@ -409,10 +353,8 @@ function getFestiveMonths(years, monthNums) {
       if(events.length > 0){
         if(!result[mn]) result[mn] = [];
         events.forEach(e => {
-          // Elak duplikasi nama dalam bulan sama
-          if(!result[mn].find(x => x.name === e.name)){
+          if(!result[mn].find(x => x.name === e.name))
             result[mn].push(e);
-          }
         });
       }
     });
@@ -420,36 +362,27 @@ function getFestiveMonths(years, monthNums) {
   return result;
 }
 
-// Build label dengan bintang jika bulan tu ada festive
-function buildLabels(baseLabels, monthNums, festiveMonths) {
-  return baseLabels.map((lbl, i) => {
-    const mn = monthNums[i];
-    return festiveMonths[mn] ? lbl + ' ⭐' : lbl;
-  });
+function buildLabels(baseLabels, monthNums, festiveMonths){
+  return baseLabels.map((lbl, i) => festiveMonths[monthNums[i]] ? lbl + ' ⭐' : lbl);
 }
 
-// Render legend festive
-function renderFestiveLegend(elId, festiveMonths, monthNums) {
+function renderFestiveLegend(elId, festiveMonths, monthNums){
   const el = document.getElementById(elId);
   if(!el) return;
-  const entries = monthNums
-    .filter(mn => festiveMonths[mn])
-    .map(mn => {
-      const events = festiveMonths[mn];
-      const evHtml = events.map(e =>
-        `<span class="${e.type === 'ph' ? 'festive-ph' : 'festive-school'}">${e.name} (${e.dates})</span>`
-      ).join('');
-      return `<div class="festive-item"><span class="festive-month">${MONTH_NAMES_MY[mn-1]}</span><div class="festive-events">${evHtml}</div></div>`;
-    }).join('');
-
-  el.innerHTML = entries || '<span style="font-family:var(--mono);font-size:10px;color:var(--muted)">Tiada cuti umum / sekolah dalam tempoh ini</span>';
+  const rows = monthNums.filter(mn => festiveMonths[mn]).map(mn => {
+    const evHtml = festiveMonths[mn].map(e =>
+      `<span class="${e.type==='ph'?'festive-ph':'festive-school'}">${e.name} (${e.dates})</span>`
+    ).join('');
+    return `<div class="festive-row"><span class="festive-month">${MONTH_NAMES_MY[mn-1]}</span><div class="festive-events">${evHtml}</div></div>`;
+  }).join('');
+  el.innerHTML = rows || '<span style="font-family:var(--mono);font-size:10px;color:var(--muted)">Tiada cuti umum / sekolah dalam tempoh ini</span>';
 }
 
 // ── Global ──
 let DB = {};
-const fmt  = n => 'RM ' + (+n).toLocaleString('ms-MY', {minimumFractionDigits:2, maximumFractionDigits:2});
+const fmt  = n => 'RM ' + (+n).toLocaleString('ms-MY',{minimumFractionDigits:2,maximumFractionDigits:2});
 const fmtN = n => (+n).toLocaleString('ms-MY');
-const pct  = (a,b) => b===0 ? '0%' : (a/b*100).toFixed(1)+'%';
+const pct  = (a,b) => b===0?'0%':(a/b*100).toFixed(1)+'%';
 const gc   = 'rgba(31,45,69,0.6)';
 const tc   = '#c9d4e8';
 
@@ -460,14 +393,14 @@ function destroyAll(){
 }
 
 function getFiltered(year, month){
-  const keys = Object.keys(DB.months || {});
-  const matched = keys.filter(k => {
-    const m = DB.months[k];
-    if(m.year !== year) return false;
-    if(month !== 0 && m.month_num !== month) return false;
+  const keys = Object.keys(DB.months||{});
+  const matched = keys.filter(k=>{
+    const m=DB.months[k];
+    if(m.year!==year) return false;
+    if(month!==0&&m.month_num!==month) return false;
     return true;
   });
-  if(matched.length === 0) return null;
+  if(matched.length===0) return null;
 
   let oSales=0,bSales=0,eSales=0,rSales=0;
   let oTix=0,bTix=0,eTix=0,rTix=0;
@@ -475,75 +408,61 @@ function getFiltered(year, month){
   let fromMap={},toMap={},opsMap={};
   let byChFrom={},byChTo={},byChOps={};
 
-  matched.forEach(k => {
-    const m = DB.months[k];
-    oSales += m.sales.OTS||0; bSales += m.sales.BOT||0;
-    eSales += m.sales.EASI||0; rSales += m.sales.RED||0;
-    oTix += m.tickets.OTS||0; bTix += m.tickets.BOT||0;
-    eTix += m.tickets.EASI||0; rTix += m.tickets.RED||0;
-    botFee    += m.api_fees.BOT||0;
-    easiFee   += m.api_fees.EASI||0;
-    redFee    += m.api_fees.RED||0;
-    redRefund += m.api_fees.RED_refund||0;
-    (m.top_from||[]).forEach(r=>{ fromMap[r.name]=(fromMap[r.name]||0)+r.val; });
-    (m.top_to  ||[]).forEach(r=>{ toMap[r.name]  =(toMap[r.name]  ||0)+r.val; });
-    (m.top_ops ||[]).forEach(r=>{ opsMap[r.name] =(opsMap[r.name] ||0)+r.val; });
-    ['OTS','BOT','EASI','RED'].forEach(ch => {
-      const cb = m.top_by_ch?.[ch]||{from:[],to:[],ops:[]};
+  matched.forEach(k=>{
+    const m=DB.months[k];
+    oSales+=m.sales.OTS||0; bSales+=m.sales.BOT||0;
+    eSales+=m.sales.EASI||0; rSales+=m.sales.RED||0;
+    oTix+=m.tickets.OTS||0; bTix+=m.tickets.BOT||0;
+    eTix+=m.tickets.EASI||0; rTix+=m.tickets.RED||0;
+    botFee+=m.api_fees.BOT||0; easiFee+=m.api_fees.EASI||0;
+    redFee+=m.api_fees.RED||0; redRefund+=m.api_fees.RED_refund||0;
+    (m.top_from||[]).forEach(r=>{fromMap[r.name]=(fromMap[r.name]||0)+r.val;});
+    (m.top_to  ||[]).forEach(r=>{toMap[r.name]  =(toMap[r.name]  ||0)+r.val;});
+    (m.top_ops ||[]).forEach(r=>{opsMap[r.name] =(opsMap[r.name] ||0)+r.val;});
+    ['OTS','BOT','EASI','RED'].forEach(ch=>{
+      const cb=m.top_by_ch?.[ch]||{from:[],to:[],ops:[]};
       if(!byChFrom[ch]) byChFrom[ch]={};
       if(!byChTo[ch])   byChTo[ch]={};
       if(!byChOps[ch])  byChOps[ch]={};
-      (cb.from||[]).forEach(r=>{ byChFrom[ch][r.name]=(byChFrom[ch][r.name]||0)+r.val; });
-      (cb.to  ||[]).forEach(r=>{ byChTo[ch][r.name]  =(byChTo[ch][r.name]  ||0)+r.val; });
-      (cb.ops ||[]).forEach(r=>{ byChOps[ch][r.name] =(byChOps[ch][r.name] ||0)+r.val; });
+      (cb.from||[]).forEach(r=>{byChFrom[ch][r.name]=(byChFrom[ch][r.name]||0)+r.val;});
+      (cb.to  ||[]).forEach(r=>{byChTo[ch][r.name]  =(byChTo[ch][r.name]  ||0)+r.val;});
+      (cb.ops ||[]).forEach(r=>{byChOps[ch][r.name] =(byChOps[ch][r.name] ||0)+r.val;});
     });
   });
 
-  const topN = (map,n=5) => Object.entries(map).map(([name,val])=>({name,val})).sort((a,b)=>b.val-a.val).slice(0,n);
+  const topN=(map,n=5)=>Object.entries(map).map(([name,val])=>({name,val})).sort((a,b)=>b.val-a.val).slice(0,n);
 
   let labels=[],monthNums=[];
   let oLine=[],bLine=[],eLine=[],rLine=[];
   let oTixLine=[],bTixLine=[],eTixLine=[],rTixLine=[];
 
-  if(month === 0){
+  if(month===0){
     for(let mn=1;mn<=12;mn++){
       const k=`${year}-${String(mn).padStart(2,'0')}`;
       const m=DB.months[k];
-      labels.push(MONTH_NAMES_MY[mn-1]);
-      monthNums.push(mn);
-      oLine.push(m?(m.sales.OTS||0):0);
-      bLine.push(m?(m.sales.BOT||0):0);
-      eLine.push(m?(m.sales.EASI||0):0);
-      rLine.push(m?(m.sales.RED||0):0);
-      oTixLine.push(m?(m.tickets.OTS||0):0);
-      bTixLine.push(m?(m.tickets.BOT||0):0);
-      eTixLine.push(m?(m.tickets.EASI||0):0);
-      rTixLine.push(m?(m.tickets.RED||0):0);
+      labels.push(MONTH_NAMES_MY[mn-1]); monthNums.push(mn);
+      oLine.push(m?(m.sales.OTS||0):0); bLine.push(m?(m.sales.BOT||0):0);
+      eLine.push(m?(m.sales.EASI||0):0); rLine.push(m?(m.sales.RED||0):0);
+      oTixLine.push(m?(m.tickets.OTS||0):0); bTixLine.push(m?(m.tickets.BOT||0):0);
+      eTixLine.push(m?(m.tickets.EASI||0):0); rTixLine.push(m?(m.tickets.RED||0):0);
     }
   } else {
     for(let i=5;i>=0;i--){
-      let mn=month-i, yr=year;
+      let mn=month-i,yr=year;
       if(mn<=0){mn+=12;yr-=1;}
       const k=`${yr}-${String(mn).padStart(2,'0')}`;
       const m=DB.months[k];
-      labels.push(MONTH_NAMES_MY[mn-1]);
-      monthNums.push(mn);
-      oLine.push(m?(m.sales.OTS||0):0);
-      bLine.push(m?(m.sales.BOT||0):0);
-      eLine.push(m?(m.sales.EASI||0):0);
-      rLine.push(m?(m.sales.RED||0):0);
-      oTixLine.push(m?(m.tickets.OTS||0):0);
-      bTixLine.push(m?(m.tickets.BOT||0):0);
-      eTixLine.push(m?(m.tickets.EASI||0):0);
-      rTixLine.push(m?(m.tickets.RED||0):0);
+      labels.push(MONTH_NAMES_MY[mn-1]); monthNums.push(mn);
+      oLine.push(m?(m.sales.OTS||0):0); bLine.push(m?(m.sales.BOT||0):0);
+      eLine.push(m?(m.sales.EASI||0):0); rLine.push(m?(m.sales.RED||0):0);
+      oTixLine.push(m?(m.tickets.OTS||0):0); bTixLine.push(m?(m.tickets.BOT||0):0);
+      eTixLine.push(m?(m.tickets.EASI||0):0); rTixLine.push(m?(m.tickets.RED||0):0);
     }
   }
 
   return {
-    oSales,bSales,eSales,rSales,
-    totalSales:oSales+bSales+eSales+rSales,
-    oTix,bTix,eTix,rTix,
-    totalTix:oTix+bTix+eTix+rTix,
+    oSales,bSales,eSales,rSales,totalSales:oSales+bSales+eSales+rSales,
+    oTix,bTix,eTix,rTix,totalTix:oTix+bTix+eTix+rTix,
     botFee,easiFee,redFee,redRefund,
     labels,monthNums,
     oLine,bLine,eLine,rLine,
@@ -558,15 +477,13 @@ function getFiltered(year, month){
   };
 }
 
-function makeGroupedBar(id, labels, datasets, yLabel){
-  const ctx = document.getElementById(id);
+function makeGroupedBar(id,labels,datasets,yLabel){
+  const ctx=document.getElementById(id);
   return new Chart(ctx,{
     type:'bar',
     data:{labels,datasets},
     options:{
-      plugins:{
-        legend:{display:true,labels:{color:tc,font:{family:'JetBrains Mono',size:10},boxWidth:8,padding:10}}
-      },
+      plugins:{legend:{display:true,labels:{color:tc,font:{family:'JetBrains Mono',size:10},boxWidth:8,padding:10}}},
       scales:{
         x:{grid:{color:gc},ticks:{color:tc,font:{family:'JetBrains Mono',size:9},maxRotation:45}},
         y:{grid:{color:gc},ticks:{color:tc,font:{family:'JetBrains Mono',size:9}},title:{display:true,text:yLabel,color:tc,font:{size:9}}}
@@ -617,12 +534,12 @@ function render(){
   const year  = +document.getElementById('sel-year').value;
   const month = +document.getElementById('sel-month').value;
   const mNames=['','Januari','Februari','Mac','April','Mei','Jun','Julai','Ogos','September','Oktober','November','Disember'];
-  document.getElementById('hdr-period').textContent = month===0?year+' — Semua Bulan':year+' — '+mNames[month];
+  document.getElementById('hdr-period').textContent=month===0?year+' — Semua Bulan':year+' — '+mNames[month];
 
-  const d = getFiltered(year, month);
+  const d=getFiltered(year,month);
   if(!d){document.getElementById('hdr-period').textContent+=' (tiada data)';return;}
 
-  // KPI
+  // KPI Jualan
   document.getElementById('k-ots-sales').textContent  = fmt(d.oSales);
   document.getElementById('k-bot-sales').textContent  = fmt(d.bSales);
   document.getElementById('k-easi-sales').textContent = fmt(d.eSales);
@@ -631,14 +548,15 @@ function render(){
   document.getElementById('k-bot-pct').textContent    = pct(d.bSales,d.totalSales);
   document.getElementById('k-easi-pct').textContent   = pct(d.eSales,d.totalSales);
   document.getElementById('k-red-pct').textContent    = pct(d.rSales,d.totalSales);
-  document.getElementById('k-ots-tix').textContent    = fmtN(d.oTix);
-  document.getElementById('k-bot-tix').textContent    = fmtN(d.bTix);
-  document.getElementById('k-easi-tix').textContent   = fmtN(d.eTix);
-  document.getElementById('k-red-tix').textContent    = fmtN(d.rTix);
-  document.getElementById('k-ots-tpct').textContent   = pct(d.oTix,d.totalTix);
-  document.getElementById('k-bot-tpct').textContent   = pct(d.bTix,d.totalTix);
-  document.getElementById('k-easi-tpct').textContent  = pct(d.eTix,d.totalTix);
-  document.getElementById('k-red-tpct').textContent   = pct(d.rTix,d.totalTix);
+  // KPI Tiket
+  document.getElementById('k-ots-tix').textContent   = fmtN(d.oTix);
+  document.getElementById('k-bot-tix').textContent   = fmtN(d.bTix);
+  document.getElementById('k-easi-tix').textContent  = fmtN(d.eTix);
+  document.getElementById('k-red-tix').textContent   = fmtN(d.rTix);
+  document.getElementById('k-ots-tpct').textContent  = pct(d.oTix,d.totalTix);
+  document.getElementById('k-bot-tpct').textContent  = pct(d.bTix,d.totalTix);
+  document.getElementById('k-easi-tpct').textContent = pct(d.eTix,d.totalTix);
+  document.getElementById('k-red-tpct').textContent  = pct(d.rTix,d.totalTix);
 
   const prevKey=(month!==0)?getPrevKey(year,month):null;
   const prev=prevKey&&DB.months[prevKey]?DB.months[prevKey]:null;
@@ -658,42 +576,37 @@ function render(){
     });
   }
 
+  // API Fees
   document.getElementById('api-bot').textContent        = fmt(d.botFee);
   document.getElementById('api-easi').textContent       = fmt(d.easiFee);
   document.getElementById('api-red').textContent        = fmt(d.redFee);
   document.getElementById('api-red-refund').textContent = fmt(d.redRefund);
   document.getElementById('api-total').textContent      = fmt(d.botFee+d.easiFee+d.redFee+d.redRefund);
 
-  // Festive — tentukan tahun mana nak check
-  // Kalau semua bulan: guna tahun filter sahaja
-  // Kalau bulan spesifik (6 bulan context): mungkin ada 2 tahun (cross-year)
-  let festiveYears = [year];
-  if(month !== 0 && month <= 5){
-    // 6 bulan ke belakang mungkin masuk tahun sebelumnya
-    festiveYears = [year-1, year];
-  }
-  const festiveMonths = getFestiveMonths(festiveYears, d.monthNums);
-  const labelWithStar = buildLabels(d.labels, d.monthNums, festiveMonths);
+  // Festive
+  let festiveYears=[year];
+  if(month!==0&&month<=5) festiveYears=[year-1,year];
+  const festiveMonths=getFestiveMonths(festiveYears,d.monthNums);
+  const labelWithStar=buildLabels(d.labels,d.monthNums,festiveMonths);
 
   // Charts
   destroyAll();
-  charts.salesCombined = makeGroupedBar('ch-combined-sales', labelWithStar, [
-    {label:'OTS',  data:d.oLine, backgroundColor:'#3b82f633', borderColor:'#3b82f6', borderWidth:1, borderRadius:3},
-    {label:'BOT',  data:d.bLine, backgroundColor:'#10b98133', borderColor:'#10b981', borderWidth:1, borderRadius:3},
-    {label:'EASI', data:d.eLine, backgroundColor:'#a78bfa33', borderColor:'#a78bfa', borderWidth:1, borderRadius:3},
-    {label:'RED',  data:d.rLine, backgroundColor:'#f8717133', borderColor:'#f87171', borderWidth:1, borderRadius:3},
-  ], 'RM');
+  charts.salesCombined=makeGroupedBar('ch-combined-sales',labelWithStar,[
+    {label:'OTS',  data:d.oLine, backgroundColor:'#3b82f633',borderColor:'#3b82f6',borderWidth:1,borderRadius:3},
+    {label:'BOT',  data:d.bLine, backgroundColor:'#10b98133',borderColor:'#10b981',borderWidth:1,borderRadius:3},
+    {label:'EASI', data:d.eLine, backgroundColor:'#a78bfa33',borderColor:'#a78bfa',borderWidth:1,borderRadius:3},
+    {label:'RED',  data:d.rLine, backgroundColor:'#f8717133',borderColor:'#f87171',borderWidth:1,borderRadius:3},
+  ],'RM');
 
-  charts.tixCombined = makeGroupedBar('ch-combined-tix', labelWithStar, [
-    {label:'OTS',  data:d.oTixLine, backgroundColor:'#3b82f633', borderColor:'#3b82f6', borderWidth:1, borderRadius:3},
-    {label:'BOT',  data:d.bTixLine, backgroundColor:'#10b98133', borderColor:'#10b981', borderWidth:1, borderRadius:3},
-    {label:'EASI', data:d.eTixLine, backgroundColor:'#a78bfa33', borderColor:'#a78bfa', borderWidth:1, borderRadius:3},
-    {label:'RED',  data:d.rTixLine, backgroundColor:'#f8717133', borderColor:'#f87171', borderWidth:1, borderRadius:3},
-  ], 'Tiket');
+  charts.tixCombined=makeGroupedBar('ch-combined-tix',labelWithStar,[
+    {label:'OTS',  data:d.oTixLine, backgroundColor:'#3b82f633',borderColor:'#3b82f6',borderWidth:1,borderRadius:3},
+    {label:'BOT',  data:d.bTixLine, backgroundColor:'#10b98133',borderColor:'#10b981',borderWidth:1,borderRadius:3},
+    {label:'EASI', data:d.eTixLine, backgroundColor:'#a78bfa33',borderColor:'#a78bfa',borderWidth:1,borderRadius:3},
+    {label:'RED',  data:d.rTixLine, backgroundColor:'#f8717133',borderColor:'#f87171',borderWidth:1,borderRadius:3},
+  ],'Tiket');
 
-  // Render legend festive (sama untuk kedua-dua chart)
-  renderFestiveLegend('festive-legend-sales', festiveMonths, d.monthNums);
-  renderFestiveLegend('festive-legend-tix',   festiveMonths, d.monthNums);
+  // Legend hanya untuk chart Jualan
+  renderFestiveLegend('festive-legend-sales',festiveMonths,d.monthNums);
 
   // Market share
   const shareColors=['#3b82f6','#10b981','#a78bfa','#f87171'];
@@ -715,7 +628,7 @@ function render(){
     plugins:[{
       id:'pctLabels',
       afterDraw(chart){
-        const {ctx,chartArea:{width,height,left,top}}=chart;
+        const{ctx,chartArea:{width,height,left,top}}=chart;
         const cx=left+width/2,cy=top+height/2;
         const meta=chart.getDatasetMeta(0);
         meta.data.forEach((arc,i)=>{
